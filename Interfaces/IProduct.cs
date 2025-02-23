@@ -4,6 +4,12 @@ namespace UITraining.Interfaces
 {
     public interface IProduct
     {
-        List<Product> Getlistproduct();
+        public List<Product> Getlistproduct();
+
+        //BARU DITAMBAHKAN TGL 23 SETELAH INI BARU KE CONTROLLER
+
+        public Product GetProductById(int id);
+
+        public bool EditProduct(Product product);
     }
 }
