@@ -62,10 +62,7 @@
                                         <td>
                                             <!-- Action buttons column -->
                                             <a href="@Url.Action("Edit", "Product", new { id = data.Id })" class="btn btn-sm btn-info">Update</a>
-                                            <input type="button" class="btn btn-sm btn-danger" value="Delete" onclick="deleteData(@data.Id)" />
-
-
-                                            @* <a href="@Url.Action("Delete", new { id = data.Id })" class="btn btn-danger btn-sm" onclick="Apakah Anda yakin ingin menghapus item ini?');">Delete</a> *@
+                                            <a href="@Url.Action("Delete", "Product", new { id = data.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">Delete</a>
                                         </td>
                                     </tr>
                                 }

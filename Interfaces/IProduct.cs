@@ -11,5 +11,6 @@ namespace UITraining.Interfaces
         public Product GetProductById(int id);
 
         public bool EditProduct(Product product);
+        public bool DeleteProduct(int id);
     }
 }

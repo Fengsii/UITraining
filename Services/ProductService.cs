@@ -58,6 +58,20 @@ namespace UITraining.Services
             return true;
         }
 
+        public bool DeleteProduct(int id)
+        {
+            var data = _conteks.Products.FirstOrDefault(x => x.Id == id);
+            if (data == null)
+            {
+                return false; 
+            }
+
+            _conteks.Products.Remove(data);
+            _conteks.SaveChanges();
+            return true;
+        }
+
+
 
     }
 }
