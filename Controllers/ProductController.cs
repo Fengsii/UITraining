@@ -42,8 +42,8 @@ namespace UITraining.Controllers
             return View();
         }
 
-     
-        [HttpGet]
+
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             var data = _interface.DeleteProduct(id);
