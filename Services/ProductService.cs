@@ -1,6 +1,9 @@
 ﻿using UITraining.Models.DB;
 using UITraining.Models;
 using UITraining.Interfaces;
+using static UITraining.Models.GeneralStatus;
+using Microsoft.EntityFrameworkCore;
+using UITraining.Models.DTO;
 
 namespace UITraining.Services
 {
@@ -13,9 +16,9 @@ namespace UITraining.Services
             _conteks = conteks;
         }
 
-        public List<Product> Getlistproduct()
+        public List<ProductDTO> Getlistproduct()
         {
-            var data = _conteks.Products.Where(x => x.ProductStatus != ProductStatus.delete).Select(x => new Product
+            var data = _conteks.Products.Include(y => y.Supplier).Where(x => x.ProductStatus != GeneralStatusData.delete).Select(x => new ProductDTO
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -23,6 +26,7 @@ namespace UITraining.Services
                 Price = x.Price,
                 Stock = x.Stock,
                 ProductStatus = x.ProductStatus,
+                SupplierName = x.Supplier.NameSupplier
                
             }).ToList();
             return data;
@@ -31,7 +35,7 @@ namespace UITraining.Services
 
         public Product GetProductById(int id)
         {
-            var data = _conteks.Products.Where(x => x.Id == id && x.ProductStatus != ProductStatus.delete).FirstOrDefault();
+            var data = _conteks.Products.Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete).FirstOrDefault();
             if(data == null)
             {
                 return new Product();
@@ -40,7 +44,7 @@ namespace UITraining.Services
             return data;
         }
 
-        public bool EditProduct(Product product)
+        public bool EditProduct(ProductDTO product)
         {
             var data = _conteks.Products.FirstOrDefault(x => x.Id == product.Id);
             if (data == null)
@@ -66,10 +70,39 @@ namespace UITraining.Services
                 return false; 
             }
 
-            data.ProductStatus = ProductStatus.delete;
-            _conteks.Products.Update(data);
+            data.ProductStatus = GeneralStatusData.delete;
+            //_conteks.Products.Update(data);
             _conteks.SaveChanges();
             return true;
+        }
+
+        public bool AddProduct(ProductDTO product)
+        {
+            //var data = _conteks.Products.Select(x => new Product
+            //{
+            //    IdSupplier = product.IdSupplier,
+            //    Name = product.Name,
+            //    Description = product.Description,
+            //    Price = product.Price,
+            //    ProductStatus = product.ProductStatus.
+            //});
+
+            
+                var data = new Product();
+
+                data.Name = product.Name;
+                data.Description = product.Description;
+                data.Price = product.Price;
+
+                data.Stock = product.Stock;
+                data.ProductStatus = product.ProductStatus;
+                data.IdSupplier = product.IdSupplier;
+
+
+            _conteks.Products.Add(data);
+            _conteks.SaveChanges();
+            return true;
+
         }
 
 

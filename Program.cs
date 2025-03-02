@@ -22,6 +22,7 @@ builder.Services.AddDbContext<ApplicationContext>(
 );
 
 builder.Services.AddScoped<IProduct,ProductService>();
+builder.Services.AddScoped<ISupplier, SupplierService>();
 
 
 

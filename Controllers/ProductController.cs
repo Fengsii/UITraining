@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UITraining.Interfaces;
 using UITraining.Models.DB;
+using UITraining.Models.DTO;
 
 namespace UITraining.Controllers
 {
@@ -9,10 +10,12 @@ namespace UITraining.Controllers
     {
 
         private readonly IProduct _interface;
+        private readonly ISupplier _supplier;
 
-        public ProductController(IProduct interfaces)
+        public ProductController(IProduct interfaces, ISupplier supplier)
         {
-            _interface = interfaces; 
+            _interface = interfaces;
+            _supplier = supplier;
         }
 
 
@@ -27,19 +30,34 @@ namespace UITraining.Controllers
         
         public IActionResult Edit(int id)
         {
+            ViewBag.Supplier = _supplier.Suppliers();
            var data = _interface.GetProductById(id);
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public IActionResult Edit(ProductDTO product)
         {
-            var data = _interface.EditProduct(product);
-            if(data)
+            if(product.Id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                var data = _interface.AddProduct(product);
+                if (data)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+            }
+            else
+            {
+                var data = _interface.EditProduct(product);
+                if (data)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+               
             }
             return View();
+
         }
 
 
