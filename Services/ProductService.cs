@@ -51,6 +51,7 @@ namespace UITraining.Services
             {
                 return false;
             }
+            data.IdSupplier = product.IdSupplier;
             data.Name = product.Name;
             data.Description = product.Description;
             data.Price = product.Price;

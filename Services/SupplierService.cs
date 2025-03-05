@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using UITraining.Interfaces;
 using UITraining.Models;
 using UITraining.Models.DB;
+using UITraining.Models.DTO;
+using static UITraining.Models.GeneralStatus;
 
 namespace UITraining.Services
 {
@@ -15,19 +18,90 @@ namespace UITraining.Services
             _conteks = conteks;
         }
 
-        //public List<Supplier> GetlistSupplier()
-        //{
-        //    //var data = _conteks.Suppliers.Where(x => x.ProductStatus != GeneralStatusData.delete).Select(x => new Product
-        //    var data = _conteks.Suppliers.Select(x => new Supplier
-        //    {
-        //        Id = x.Id,
-        //        NameSupplier = x.NameSupplier,
-        //        SupplierAddress = x.SupplierAddress,
 
-        //    }).ToList();
-        //    return data;
+        public List<SupplierDTO> GetlistSupplier()
+        {
+            var data = _conteks.Suppliers.Where(x => x.SupplierStatus != GeneralStatusSupplier.delete).Select(x => new SupplierDTO
+            {
+                Id = x.Id,
+                NameSupplier = x.NameSupplier,
+                SupplierAddress = x.SupplierAddress,
+                SupplierStatus = x.SupplierStatus,
 
-        //}
+            }).ToList();
+            return data;
+
+        }
+
+        public Supplier GetSupplierById(int id)
+        {
+            var data = _conteks.Suppliers.Where(x => x.Id == id && x.SupplierStatus != GeneralStatusSupplier.delete).FirstOrDefault();
+            if (data == null)
+            {
+                return new Supplier();
+            }
+
+            return data;
+        }
+
+
+        public bool EditSuppliers(SupplierDTO supplier)
+        {
+            var data = _conteks.Suppliers.FirstOrDefault(x => x.Id == supplier.Id);
+            if (data == null)
+            {
+                return false;
+            }
+            data.Id = supplier.Id;
+            data.NameSupplier = supplier.NameSupplier;
+            data.SupplierAddress = supplier.SupplierAddress;
+            data.SupplierStatus = supplier.SupplierStatus;
+
+
+            _conteks.Suppliers.Update(data);
+            _conteks.SaveChanges();
+            return true;
+        }
+
+
+        public bool AddSupplier(SupplierDTO supplier)
+        {
+            //var data = _conteks.Products.Select(x => new Product
+            //{
+            //    IdSupplier = product.IdSupplier,
+            //    Name = product.Name,
+            //    Description = product.Description,
+            //    Price = product.Price,
+            //    ProductStatus = product.ProductStatus.
+            //});
+
+
+            var data = new Supplier();
+            data.NameSupplier = supplier.NameSupplier;
+            data.SupplierAddress = supplier.SupplierAddress;
+            data.SupplierStatus = supplier.SupplierStatus;
+
+            _conteks.Suppliers.Add(data);
+            _conteks.SaveChanges();
+            return true;
+
+        }
+
+        public bool DeleteSupplier(int id)
+        {
+            var data = _conteks.Suppliers.FirstOrDefault(x => x.Id == id);
+            if (data == null)
+            {
+                return false;
+            }
+
+            data.SupplierStatus = GeneralStatusSupplier.delete;
+            //_conteks.Products.Update(data);
+            _conteks.SaveChanges();
+            return true;
+        }
+
+
 
         public List<SelectListItem> Suppliers()
         {
