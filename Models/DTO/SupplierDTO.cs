@@ -7,6 +7,6 @@ namespace UITraining.Models.DTO
         public int Id { get; set; }
         public string NameSupplier { get; set; }
         public string SupplierAddress { get; set; }
-        public GeneralStatusSupplier SupplierStatus { get; set; }
+        public GeneralStatusData SupplierStatus { get; set; }
     }
 }

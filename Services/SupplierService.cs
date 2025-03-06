@@ -21,7 +21,7 @@ namespace UITraining.Services
 
         public List<SupplierDTO> GetlistSupplier()
         {
-            var data = _conteks.Suppliers.Where(x => x.SupplierStatus != GeneralStatusSupplier.delete).Select(x => new SupplierDTO
+            var data = _conteks.Suppliers.Where(x => x.SupplierStatus != GeneralStatusData.delete).Select(x => new SupplierDTO
             {
                 Id = x.Id,
                 NameSupplier = x.NameSupplier,
@@ -35,7 +35,7 @@ namespace UITraining.Services
 
         public Supplier GetSupplierById(int id)
         {
-            var data = _conteks.Suppliers.Where(x => x.Id == id && x.SupplierStatus != GeneralStatusSupplier.delete).FirstOrDefault();
+            var data = _conteks.Suppliers.Where(x => x.Id == id && x.SupplierStatus != GeneralStatusData.delete).FirstOrDefault();
             if (data == null)
             {
                 return new Supplier();
@@ -95,7 +95,7 @@ namespace UITraining.Services
                 return false;
             }
 
-            data.SupplierStatus = GeneralStatusSupplier.delete;
+            data.SupplierStatus = GeneralStatusData.delete;
             //_conteks.Products.Update(data);
             _conteks.SaveChanges();
             return true;
