@@ -8976,8 +8976,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>g1kl4m4mko</Fingerprint>
-      <Integrity>tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=</Integrity>
+      <Fingerprint>3gvq8bndft</Fingerprint>
+      <Integrity>s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\PriceFormat.js'))</OriginalItemSpec>

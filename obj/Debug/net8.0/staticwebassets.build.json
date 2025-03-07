@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sWblatW80p0bEk+v/rfUmBgcOG+j5rbFaDAB41bXohM=",
+  "Hash": "vtkajy4bQSd99WXyd8PK0oYRNrRCxe7aTYJbLMDQc/8=",
   "Source": "UITraining",
   "BasePath": "_content/UITraining",
   "Mode": "Default",
@@ -10531,8 +10531,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "g1kl4m4mko",
-      "Integrity": "tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=",
+      "Fingerprint": "3gvq8bndft",
+      "Integrity": "s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\PriceFormat.js"
@@ -52594,7 +52594,7 @@
       ]
     },
     {
-      "Route": "js/PriceFormat.g1kl4m4mko.js",
+      "Route": "js/PriceFormat.3gvq8bndft.js",
       "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -52604,7 +52604,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "663"
+          "Value": "966"
         },
         {
           "Name": "Content-Type",
@@ -52612,11 +52612,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=\""
+          "Value": "\"s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 06:40:11 GMT"
+          "Value": "Fri, 07 Mar 2025 06:57:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -52626,7 +52626,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "g1kl4m4mko"
+          "Value": "3gvq8bndft"
         },
         {
           "Name": "label",
@@ -52634,7 +52634,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg="
+          "Value": "sha256-s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM="
         }
       ]
     },
@@ -52649,7 +52649,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "663"
+          "Value": "966"
         },
         {
           "Name": "Content-Type",
@@ -52657,11 +52657,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=\""
+          "Value": "\"s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 06:40:11 GMT"
+          "Value": "Fri, 07 Mar 2025 06:57:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -52671,7 +52671,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg="
+          "Value": "sha256-s+U75RcrWm9LewfmPmXG7ZNsmRGTUcY8StS11qNMuUM="
         }
       ]
     },
@@ -57454,7 +57454,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 18:48:06 GMT"
+          "Value": "Fri, 07 Mar 2025 06:56:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -57491,7 +57491,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 18:48:06 GMT"
+          "Value": "Fri, 07 Mar 2025 06:56:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -57536,7 +57536,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 18:48:06 GMT"
+          "Value": "Fri, 07 Mar 2025 06:56:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -57581,7 +57581,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Mar 2025 18:48:06 GMT"
+          "Value": "Fri, 07 Mar 2025 06:56:00 GMT"
         },
         {
           "Name": "Cache-Control",

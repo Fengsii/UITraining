@@ -60,7 +60,8 @@
                                         <td>@data.Id</td>
                                         <td>@data.Name</td>
                                         <td>@data.Description</td>
-                                        <td>@data.Price</td>
+                                        @* <td>@data.Price</td> *@
+                                        <td>@data.Price.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</td>
                                         <td>@data.Stock</td>
                                         <td>@data.SupplierName</td>
                                         <td>@data.ProductStatus</td>
