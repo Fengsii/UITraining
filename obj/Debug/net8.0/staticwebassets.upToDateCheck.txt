@@ -496,6 +496,7 @@ wwwroot\assets\vendor\tinymce\tinymce.js
 wwwroot\assets\vendor\tinymce\tinymce.min.js
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\PriceFormat.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

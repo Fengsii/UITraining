@@ -1997,6 +1997,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
+      "PackagePath": "staticwebassets\\js\\PriceFormat.js"
+    },
+    {
       "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

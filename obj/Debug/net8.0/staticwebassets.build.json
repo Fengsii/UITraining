@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4z0EG9AM721rqBDJ9fv2rmePLn2jwNGYzS4LF5CNmmo=",
+  "Hash": "sWblatW80p0bEk+v/rfUmBgcOG+j5rbFaDAB41bXohM=",
   "Source": "UITraining",
   "BasePath": "_content/UITraining",
   "Mode": "Default",
@@ -10515,6 +10515,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
+      "SourceId": "UITraining",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\",
+      "BasePath": "_content/UITraining",
+      "RelativePath": "js/PriceFormat#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g1kl4m4mko",
+      "Integrity": "tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\PriceFormat.js"
     },
     {
       "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\site.js",
@@ -52569,6 +52590,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "js/PriceFormat.g1kl4m4mko.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "663"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 07 Mar 2025 06:40:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g1kl4m4mko"
+        },
+        {
+          "Name": "label",
+          "Value": "js/PriceFormat.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg="
+        }
+      ]
+    },
+    {
+      "Route": "js/PriceFormat.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "663"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 07 Mar 2025 06:40:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tLQ5AXni1UE+k0nlLBrYEaI73nTYCZeyxtqJ+pZ48Eg="
         }
       ]
     },
