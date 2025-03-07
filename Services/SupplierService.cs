@@ -106,6 +106,7 @@ namespace UITraining.Services
         public List<SelectListItem> Suppliers()
         {
             var datas = _conteks.Suppliers
+                .Where(x => x.SupplierStatus == GeneralStatusData.Active)
                 .Select(x => new SelectListItem
                 {
                     Text = x.NameSupplier,
