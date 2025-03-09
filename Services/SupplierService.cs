@@ -95,6 +95,17 @@ namespace UITraining.Services
                 return false;
             }
 
+            // Ambil semua produk yang terkait dengan supplier ini dan tandai sebagai dihapus
+            var relatedProducts = _conteks.Products.Where(p => p.IdSupplier == id).ToList();
+            foreach (var product in relatedProducts)
+            {
+                product.ProductStatus = GeneralStatusData.delete;
+            }
+
+            // Tandai supplier sebagai dihapus
+            data.SupplierStatus = GeneralStatusData.delete;
+
+
             data.SupplierStatus = GeneralStatusData.delete;
             //_conteks.Products.Update(data);
             _conteks.SaveChanges();

@@ -88,13 +88,13 @@ namespace UITraining.Services
             //    ProductStatus = product.ProductStatus.
             //});
 
-            //var datasup = _conteks.Suppliers.FirstOrDefault(x => x.Id == product.IdSupplier);
-            //if(datasup == null || datasup.SupplierStatus != GeneralStatusData.Active)
-            //{
-            //    return false;
-            //}
-            
-                var data = new Product();
+            var datasup = _conteks.Suppliers.FirstOrDefault(x => x.Id == product.IdSupplier);
+            if (datasup == null || datasup.SupplierStatus != GeneralStatusData.Active)
+            {
+                return false;
+            }
+
+            var data = new Product();
 
                 data.Name = product.Name;
                 data.Description = product.Description;
