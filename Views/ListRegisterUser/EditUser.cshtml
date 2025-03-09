@@ -2,19 +2,18 @@
 @* SETELAH DARI CONTROLLER *@
 
 @using UITraining.Models.DB
-@using UITraining.Models.DTO
-@model Product
+@model UserAccess
 
 
 @{
-    ViewData["Title"] = "Product";
+    ViewData["Title"] = "UserAccess";
 }
 
 
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Product</h1>
+        <h1>User List</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -29,11 +28,11 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Add New Product</h5>
+                        <h5 class="card-title">Edit User Register</h5>
 
                         <!-- Horizontal Form -->
                         @* asp-action="Edit" harus edit *@
-                        <form asp-controller="Product" asp-action="Edit" method="post">
+                        <form asp-controller="ListRegisterUser" asp-action="EditUser" method="post">
                             <div class="row mb-3" hidden>
                                 <label for="Id" class="col-sm-2 col-form-label">Id</label>
                                 <div class="col-sm-10">
@@ -43,40 +42,32 @@
                             <div class="row mb-3">
                                 <label for="Name" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" asp-for="Name">
+                                    <input type="text" class="form-control" id="name" asp-for="Name" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="Stock" class="col-sm-2 col-form-label">Stock</label>
+                                <label for="Stock" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="text" asp-for="Stock">
+                                    <input type="text" class="form-control" id="text" asp-for="UserName" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="Description" class="col-sm-2 col-form-label">Description</label>
+                                <label for="Stock" class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="description" asp-for="Description">
+                                    <input type="text" class="form-control" id="text" asp-for="Password" readonly>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="Price" class="col-sm-2 col-form-label">Price</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="price" asp-for="Price">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="Supplier" class="col-sm-2 col-form-label">Supplier</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" asp-for="IdSupplier" asp-items="ViewBag.Supplier">
-                                        <option value="">-- Pilih Supplier --</option>
-                                    </select>
+                            @* <div class="row mb-3"> *@
+                            @*     <label for="Stock" class="col-sm-2 col-form-label">MatchPassword</label> *@
+                            @*     <div class="col-sm-10"> *@
+                            @*         <input type="text" class="form-control" id="text" asp-for="MatchPassword"> *@
+                            @*     </div> *@
+                            @* </div> *@
 
-                                </div>
-                            </div>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
-                                    <select asp-for="ProductStatus" class="form-select" aria-label="Default select example">
+                                    <select asp-for=" UserStatus" class="form-select" aria-label="Default select example">
                                         <option value=0>Published</option>
                                         <option value=1>Unpublished</option>
                                     </select>
@@ -84,7 +75,7 @@
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Save Data</button>
-                                <a href="@Url.Action("Index","Product")" class="btn btn-info">Cancel</a>
+                                <a href="@Url.Action("Index","ListRegisterUser")" class="btn btn-info">Cancel</a>
                             </div>
                         </form><!-- End Horizontal Form -->
 

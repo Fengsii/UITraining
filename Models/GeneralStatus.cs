@@ -4,10 +4,8 @@
     {
         public enum GeneralStatusData
         {
-            published,// semua bisa lihat
-            unpublished,//admin aja yang lihat
-            Active,// semua bisa lihat
-            Inactive,//admin aja yang lihat
+            Published,// semua bisa lihat
+            Unpublished,//admin aja yang lihat
             delete//cuman ad didata base
         }
 

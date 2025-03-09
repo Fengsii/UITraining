@@ -95,15 +95,15 @@ namespace UITraining.Services
                 return false;
             }
 
-            // Ambil semua produk yang terkait dengan supplier ini dan tandai sebagai dihapus
-            var relatedProducts = _conteks.Products.Where(p => p.IdSupplier == id).ToList();
-            foreach (var product in relatedProducts)
-            {
-                product.ProductStatus = GeneralStatusData.delete;
-            }
+            //// Ambil semua produk yang terkait dengan supplier ini dan tandai sebagai dihapus
+            //var relatedProducts = _conteks.Products.Where(p => p.IdSupplier == id).ToList();
+            //foreach (var product in relatedProducts)
+            //{
+            //    product.ProductStatus = GeneralStatusData.delete;
+            //}
 
-            // Tandai supplier sebagai dihapus
-            data.SupplierStatus = GeneralStatusData.delete;
+            //// Tandai supplier sebagai dihapus
+            //data.SupplierStatus = GeneralStatusData.delete;
 
 
             data.SupplierStatus = GeneralStatusData.delete;
@@ -117,7 +117,7 @@ namespace UITraining.Services
         public List<SelectListItem> Suppliers()
         {
             var datas = _conteks.Suppliers
-                .Where(x => x.SupplierStatus == GeneralStatusData.Active)
+                .Where(x => x.SupplierStatus == GeneralStatusData.Published)
                 .Select(x => new SelectListItem
                 {
                     Text = x.NameSupplier,
