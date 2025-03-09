@@ -20,6 +20,11 @@ namespace UITraining.Services
 
         public bool InsertUserAccess(UserAccessDTO dto)
         {
+            if (dto.Password != dto.MatchPassword)
+            {
+                return false; // Menolak penyimpanan jika password tidak sama
+            }
+
             var user = new UserAccess
             {
                 Name = dto.Name,
@@ -34,8 +39,6 @@ namespace UITraining.Services
 
             return true;
         }
-
-
         public List<UserAccessDTO> GetlistUser()
         {
             var data = _conteks.UserAccesses.Where(x => x.UserStatus != GeneralStatusData.delete).Select(x => new UserAccessDTO
@@ -44,6 +47,7 @@ namespace UITraining.Services
                 Name = x.Name,
                 UserName = x.UserName,
                 Password = x.Password,
+                MatchPassword = x.Password
 
             }).ToList();
             return data;
@@ -60,7 +64,6 @@ namespace UITraining.Services
 
             return data;
         }
-
 
         public bool EditUser(UserAccessDTO userAccessDTO)
         {
@@ -88,17 +91,6 @@ namespace UITraining.Services
             {
                 return false;
             }
-
-            //// Ambil semua produk yang terkait dengan supplier ini dan tandai sebagai dihapus
-            //var relatedProducts = _conteks.Products.Where(p => p.IdSupplier == id).ToList();
-            //foreach (var product in relatedProducts)
-            //{
-            //    product.ProductStatus = GeneralStatusData.delete;
-            //}
-
-            //// Tandai supplier sebagai dihapus
-            //data.SupplierStatus = GeneralStatusData.delete;
-
 
             data.UserStatus = GeneralStatusData.delete;
             //_conteks.Products.Update(data);

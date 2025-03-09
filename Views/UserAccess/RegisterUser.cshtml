@@ -139,6 +139,24 @@
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form"); // Ambil form
+            if (form) {
+                form.addEventListener("submit", function (e) {
+                    const password = document.querySelector("#yourPassword").value;
+                    const matchPassword = document.querySelector("#matchPassword").value;
+
+                    if (password !== matchPassword) {
+                        alert("Password dan Konfirmasi Password harus sama!");
+                        e.preventDefault(); // Mencegah form dikirim jika tidak valid
+                    }
+                });
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>

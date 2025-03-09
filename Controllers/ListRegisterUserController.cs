@@ -32,7 +32,7 @@ namespace UITraining.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            return View(data);
+            return View(userAccessDTO);
 
         }
 
