@@ -24,17 +24,29 @@ namespace UITraining.Controllers
             return View(data);
         }
 
-        [HttpPost]
-        public IActionResult EditUser(UserAccessDTO userAccessDTO)
-        {
-            var data = _IUserAccess.EditUser(userAccessDTO);
-            if (data)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            return View(userAccessDTO);
+        //[HttpPost]
+        //public IActionResult EditUser(UserAccessDTO userAccessDTO)
+        //{
+        //    var data = _IUserAccess.EditUser(userAccessDTO);
+        //    if (data)
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View();
 
-        }
+        //}
+
+        [HttpPost]
+public IActionResult EditUser(UserAccessDTO userAccessDTO)
+{
+    // Pastikan UserStatus diset dengan benar
+    var data = _IUserAccess.EditUser(userAccessDTO);
+    if (data)
+    {
+        return RedirectToAction(nameof(Index));
+    }
+    return View();
+}
 
         [HttpPost]
         public IActionResult Delete(int id)
@@ -46,9 +58,6 @@ namespace UITraining.Controllers
             }
             return BadRequest("Gagal menghapus User.");
         }
-
-
-
 
     }
 }

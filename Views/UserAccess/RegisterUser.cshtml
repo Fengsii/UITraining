@@ -83,16 +83,28 @@
                                             <div class="invalid-feedback">Please input a username.</div>
                                         </div>
 
+                                        @* <div class="col-12"> *@
+                                        @*     <label for="yourPassword" class="form-label">Password</label> *@
+                                        @*     <input type="password" asp-for="Password" name="password" class="form-control" id="yourPassword" required> *@
+                                        @*     <div class="invalid-feedback">Please enter your password!</div> *@
+                                        @* </div> *@
+
+                                        @* <div class="col-12"> *@
+                                        @*     <label for="yourMatchPassword" class="form-label">Re-entar Password</label> *@
+                                        @*     <input type="password" asp-for="MatchPassword" name="password" class="form-control" id="yourMatchPassword" required> *@
+                                        @*     <div class="invalid-feedback">Please re-enter your password!</div> *@
+                                        @* </div> *@
+
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" asp-for="Password" name="password" class="form-control" id="yourPassword" required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
+                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                                            <span class="text-danger" asp-validation-for="Password"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="yourMatchPassword" class="form-label">Re-entar Password</label>
-                                            <input type="password" asp-for="MatchPassword" name="password" class="form-control" id="yourMatchPassword" required>
-                                            <div class="invalid-feedback">Please re-enter your password!</div>
+                                            <label for="yourMatchPassword" class="form-label">Re-enter Password</label>
+                                            <input type="password" asp-for="MatchPassword" class="form-control" id="yourMatchPassword" required>
+                                            <span class="text-danger" asp-validation-for="MatchPassword"></span>
                                         </div>
 
                                         <div class="col-12">
@@ -139,20 +151,19 @@
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector("form"); // Ambil form
-            if (form) {
-                form.addEventListener("submit", function (e) {
-                    const password = document.querySelector("#yourPassword").value;
-                    const matchPassword = document.querySelector("#matchPassword").value;
+            const password = document.getElementById("yourPassword");
+            const matchPassword = document.getElementById("yourMatchPassword");
+            const form = document.querySelector("form");
 
-                    if (password !== matchPassword) {
-                        alert("Password dan Konfirmasi Password harus sama!");
-                        e.preventDefault(); // Mencegah form dikirim jika tidak valid
-                    }
-                });
-            }
+            form.addEventListener("submit", function (event) {
+                if (password.value !== matchPassword.value) {
+                    event.preventDefault(); // Mencegah form terkirim jika password tidak sama
+                    alert("Password dan Konfirmasi Password harus sama!");
+                }
+            });
         });
     </script>
 

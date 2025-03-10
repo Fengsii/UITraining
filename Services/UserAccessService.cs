@@ -47,7 +47,8 @@ namespace UITraining.Services
                 Name = x.Name,
                 UserName = x.UserName,
                 Password = x.Password,
-                MatchPassword = x.Password
+                MatchPassword = x.Password,
+                UserStatus = x.UserStatus
 
             }).ToList();
             return data;
@@ -72,7 +73,10 @@ namespace UITraining.Services
             {
                 return false;
             }
-           
+            //data.Name = userAccessDTO.Name;
+            //data.UserName = userAccessDTO.UserName;
+            //data.Password = userAccessDTO.Password;
+            data.AccessDate = DateTime.Now;
             data.UserStatus = userAccessDTO.UserStatus;
 
 

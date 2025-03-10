@@ -8,7 +8,5 @@
             Unpublished,//admin aja yang lihat
             delete//cuman ad didata base
         }
-
-       
     }
 }

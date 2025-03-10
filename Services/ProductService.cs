@@ -16,22 +16,41 @@ namespace UITraining.Services
             _conteks = conteks;
         }
 
+        //public List<ProductDTO> Getlistproduct()
+        //{
+        //    var data = _conteks.Products.Include(y => y.Supplier).Where(x => x.ProductStatus != GeneralStatusData.delete).Select(x => new ProductDTO
+        //    {
+        //        Id = x.Id,
+        //        Name = x.Name,
+        //        Description = x.Description,
+        //        Price = x.Price,
+        //        Stock = x.Stock,
+        //        ProductStatus = x.ProductStatus,
+        //        SupplierName = x.Supplier.NameSupplier
+
+        //    }).ToList();
+        //    return data;
+
+        //}
+
         public List<ProductDTO> Getlistproduct()
         {
-            var data = _conteks.Products.Include(y => y.Supplier).Where(x => x.ProductStatus != GeneralStatusData.delete).Select(x => new ProductDTO
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Description = x.Description,
-                Price = x.Price,
-                Stock = x.Stock,
-                ProductStatus = x.ProductStatus,
-                SupplierName = x.Supplier.NameSupplier
-               
-            }).ToList();
-            return data;
+            var data = _conteks.Products.Include(y => y.Supplier)
+                .Where(x => x.ProductStatus != GeneralStatus.GeneralStatusData.delete)
+                .Select(x => new ProductDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price,
+                    Stock = x.Stock,
+                    ProductStatus = x.ProductStatus,
+                    SupplierName = x.Supplier.NameSupplier
+                }).ToList();
 
+            return data;
         }
+
 
         public Product GetProductById(int id)
         {
