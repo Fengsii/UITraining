@@ -39,6 +39,18 @@ namespace UITraining.Services
 
             return true;
         }
+
+
+        // Method untuk validasi login
+        public bool ValidateLogin(string username, string password)
+        {
+            var user = _conteks.UserAccesses
+                .FirstOrDefault(x => x.UserName == username && x.Password == password && x.UserStatus != GeneralStatusData.delete);
+
+            return user != null; // Return true jika user ditemukan
+        }
+
+
         public List<UserAccessDTO> GetlistUser()
         {
             var data = _conteks.UserAccesses.Where(x => x.UserStatus != GeneralStatusData.delete).Select(x => new UserAccessDTO
@@ -73,9 +85,7 @@ namespace UITraining.Services
             {
                 return false;
             }
-            //data.Name = userAccessDTO.Name;
-            //data.UserName = userAccessDTO.UserName;
-            //data.Password = userAccessDTO.Password;
+           
             data.AccessDate = DateTime.Now;
             data.UserStatus = userAccessDTO.UserStatus;
 
@@ -101,6 +111,8 @@ namespace UITraining.Services
             _conteks.SaveChanges();
             return true;
         }
+
+
 
     }
 }

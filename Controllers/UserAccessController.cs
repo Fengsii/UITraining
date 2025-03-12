@@ -43,6 +43,65 @@ namespace UITraining.Controllers
         //}
 
 
+        // Handle proses login
+        [HttpPost]
+        //public IActionResult Login(UserAccessDTO userAccessDTO)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(userAccessDTO); // Jika validasi gagal, kembalikan ke form login
+        //    }
+
+        //    try
+        //    {
+        //        var isValid = _IUserAccess.ValidateLogin(userAccessDTO.UserName, userAccessDTO.Password);
+        //        if (isValid)
+        //        {
+        //            // Redirect ke dashboard atau halaman lain setelah login berhasil
+        //            return RedirectToAction("Index", "Dashboard");
+        //        }
+
+        //        // Jika login gagal, tampilkan pesan error
+        //        ModelState.AddModelError("", "Username atau Password salah!");
+        //        return View(userAccessDTO);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError("", "Terjadi kesalahan saat login.");
+        //        return View(userAccessDTO);
+        //    }
+        //}
+
+
+        [HttpPost]
+        public IActionResult Login(LoginDTO loginDTO) // Ganti parameter menjadi LoginDTO
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(loginDTO); // Kembalikan ke halaman login jika validasi gagal
+            }
+
+            try
+            {
+                var isValid = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
+                if (isValid)
+                {
+                    // Redirect ke halaman dashboard atau halaman lain setelah login berhasil
+                    return RedirectToAction("Index", "Dashboard");
+                }
+
+                // Jika login gagal, tampilkan pesan error
+                ModelState.AddModelError("", "Username atau Password salah!");
+                return View(loginDTO);
+            }
+            catch (Exception ex)
+            {
+                // Tangani kesalahan dan tampilkan pesan error
+                ModelState.AddModelError("", "Terjadi kesalahan saat login.");
+                return View(loginDTO);
+            }
+        }
+
         [HttpPost]
         public IActionResult RegisterUser(UserAccessDTO userAccessDTO)
         {
@@ -62,7 +121,7 @@ namespace UITraining.Controllers
                 var isSuccess = _IUserAccess.InsertUserAccess(userAccessDTO);
                 if (isSuccess)
                 {
-                    return RedirectToAction("Index", "Dashboard"); // Redirect jika berhasil
+                    return RedirectToAction("Login", "UserAccess"); // Redirect jika berhasil
                 }
 
                 ModelState.AddModelError("", "Gagal mendaftarkan user. Silakan coba lagi.");
