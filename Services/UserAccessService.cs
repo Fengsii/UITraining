@@ -20,10 +20,10 @@ namespace UITraining.Services
 
         public bool InsertUserAccess(UserAccessDTO dto)
         {
-            if (dto.Password != dto.MatchPassword)
-            {
-                return false; // Menolak penyimpanan jika password tidak sama
-            }
+            //if (dto.Password != dto.MatchPassword)
+            //{
+            //    return false; 
+            //}
 
             var user = new UserAccess
             {
@@ -41,13 +41,19 @@ namespace UITraining.Services
         }
 
 
-        // Method untuk validasi login
+        
         public bool ValidateLogin(string username, string password)
         {
             var user = _conteks.UserAccesses
                 .FirstOrDefault(x => x.UserName == username && x.Password == password && x.UserStatus != GeneralStatusData.delete);
+            if(user != null)
+            {
+                user.AccessDate = DateTime.Now;
+                _conteks.SaveChanges();
+                return true;
+            }
 
-            return user != null; // Return true jika user ditemukan
+            return false;
         }
 
 

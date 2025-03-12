@@ -19,6 +19,21 @@
     <!-- Favicons -->
     <link href="~/assets/img/favicon.png" rel="icon">
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <style>
+        .input-group button {
+            border: 1px solid #ced4da;
+            border-left: none; /* Hilangkan border kiri */
+            background-color: #fff;
+        }
+
+        .input-group button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .input-group button i {
+                font-size: 1.2rem;
+        }
+    </style>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -85,25 +100,43 @@
 
                                         @* <div class="col-12"> *@
                                         @*     <label for="yourPassword" class="form-label">Password</label> *@
-                                        @*     <input type="password" asp-for="Password" name="password" class="form-control" id="yourPassword" required> *@
-                                        @*     <div class="invalid-feedback">Please enter your password!</div> *@
+                                        @*     <input type="password" asp-for="Password" class="form-control" id="yourPassword" required> *@
+                                        @*     <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('yourPassword')"> *@
+                                        @*         <i class="bi bi-eye"></i> <!-- Ikon mata --> *@
+                                        @*     </button> *@
+                                        @*     <span class="text-danger" asp-validation-for="Password"></span> *@
+                                            
                                         @* </div> *@
 
                                         @* <div class="col-12"> *@
-                                        @*     <label for="yourMatchPassword" class="form-label">Re-entar Password</label> *@
-                                        @*     <input type="password" asp-for="MatchPassword" name="password" class="form-control" id="yourMatchPassword" required> *@
-                                        @*     <div class="invalid-feedback">Please re-enter your password!</div> *@
+                                        @*     <label for="yourMatchPassword" class="form-label">MatchPassword</label> *@
+                                        @*     <input type="password" asp-for="MatchPassword" class="form-control" id="yourMatchPassword" required> *@
+                                        @*     <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('yourPassword')"> *@
+                                        @*         <i class="bi bi-eye"></i> <!-- Ikon mata --> *@
+                                        @*     </button> *@
+                                        @*     <span class="text-danger" asp-validation-for="MatchPassword"></span> *@
+                                            
                                         @* </div> *@
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                                            <div class="input-group">
+                                                <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('yourPassword')">
+                                                    <i class="bi bi-eye"></i> <!-- Ikon mata -->
+                                                </button>
+                                            </div>
                                             <span class="text-danger" asp-validation-for="Password"></span>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="yourMatchPassword" class="form-label">Re-enter Password</label>
-                                            <input type="password" asp-for="MatchPassword" class="form-control" id="yourMatchPassword" required>
+                                            <label for="yourMatchPassword" class="form-label">MatchPassword</label>
+                                            <div class="input-group">
+                                                <input type="password" asp-for="MatchPassword" class="form-control" id="yourMatchPassword" required>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('yourMatchPassword')">
+                                                    <i class="bi bi-eye"></i> <!-- Ikon mata -->
+                                                </button>
+                                            </div>
                                             <span class="text-danger" asp-validation-for="MatchPassword"></span>
                                         </div>
 
@@ -151,20 +184,37 @@
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const password = document.getElementById("yourPassword");
-            const matchPassword = document.getElementById("yourMatchPassword");
-            const form = document.querySelector("form");
+            // Cek apakah ada pesan error
+            const errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                alert(errorMessage); // Tampilkan alert error
+            }
 
-            form.addEventListener("submit", function (event) {
-                if (password.value !== matchPassword.value) {
-                    event.preventDefault(); // Mencegah form terkirim jika password tidak sama
-                    alert("Password dan Konfirmasi Password harus sama!");
-                }
-            });
+            // Cek apakah ada pesan sukses
+            const successMessage = '@TempData["SuccessMessage"]';
+            if (successMessage) {
+                alert(successMessage); // Tampilkan alert sukses
+            }
         });
+    </script>
+
+    <script>
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = passwordInput.nextElementSibling.querySelector('i');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.classList.remove("bi-eye");
+                toggleButton.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleButton.classList.remove("bi-eye-slash");
+                toggleButton.classList.add("bi-eye");
+            }
+        }
     </script>
 
 

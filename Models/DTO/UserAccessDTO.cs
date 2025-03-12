@@ -10,10 +10,10 @@ namespace UITraining.Models.DTO
         public string Name { get; set; }
         [Required]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Password wajib diisi")]
+        //[Required(ErrorMessage = "Password wajib diisi")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Konfirmasi Password wajib diisi")]
-        [Compare("Password", ErrorMessage = "Password dan Konfirmasi Password harus sama")]
+        //[Required(ErrorMessage = "Konfirmasi Password wajib diisi")]
+        //[Compare("Password", ErrorMessage = "Password dan Konfirmasi Password harus sama")]
         public string MatchPassword { get; set; }
         public GeneralStatusData UserStatus { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿@using UITraining.Models.DTO
 @model LoginDTO
 
+
 @{
     Layout = null;
 }
@@ -29,7 +30,21 @@
     <!-- Favicons -->
     <link href="~/assets/img/favicon.png" rel="icon">
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <style>
+        .input-group button {
+            border: 1px solid #ced4da;
+            border-left: none; /* Hilangkan border kiri */
+            background-color: #fff;
+        }
 
+        .input-group button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .input-group button i {
+            font-size: 1.2rem;
+        }
+    </style>
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -76,9 +91,20 @@
                                             <div class="invalid-feedback">Please input a username.</div>
                                         </div>
 
+                                        @* <div class="col-12"> *@
+                                        @*     <label for="yourPassword" class="form-label">Password</label> *@
+                                        @*     <input type="password" asp-for="Password" class="form-control" id="yourPassword" required> *@
+                                        @*     <span class="text-danger" asp-validation-for="Password"></span> *@
+                                        @* </div> *@
+
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                                            <div class="input-group">
+                                                <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('yourPassword')">
+                                                    <i class="bi bi-eye"></i> <!-- Ikon mata -->
+                                                </button>
+                                            </div>
                                             <span class="text-danger" asp-validation-for="Password"></span>
                                         </div>
 
@@ -113,7 +139,38 @@
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Cek apakah ada pesan error
+            const errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                alert(errorMessage); // Tampilkan alert error
+            }
 
+            // Cek apakah ada pesan sukses
+            const successMessage = '@TempData["SuccessMessage"]';
+            if (successMessage) {
+                alert(successMessage); // Tampilkan alert sukses
+            }
+        });
+    </script>
+
+    <script>
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = passwordInput.nextElementSibling.querySelector('i');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.classList.remove("bi-eye");
+                toggleButton.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleButton.classList.remove("bi-eye-slash");
+                toggleButton.classList.add("bi-eye");
+            }
+        }
+    </script>
 
 </body>
 
