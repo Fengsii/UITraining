@@ -277,7 +277,7 @@
 
             <li class="nav-item">
                @*  <a class="nav-link " href="@Url.Action("Index","Dashboard")"> *@
-                <a class="nav-link " href="/Dashboard">
+                <a class="nav-link " href="/Dashboard/Index">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -286,7 +286,9 @@
 
             <li class="nav-item">
                @*  <a class="nav-link " href="@Url.Action("Index","Product")"> *@
-                <a class="nav-link " href="/Product">
+                <a class="nav-link " href="/Product/Index">
+                @* <a class="nav-link " href="/Product"> *@
+                @*     @Url.Action("RegisterUser", "UserAccess") *@
                     <i class="bi bi-grid"></i>
                     <span>Product</span>
                 </a>
@@ -299,7 +301,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link " href="/Supplier">
+                <a class="nav-link " href="/Supplier/Index">
                     <i class="bi bi-question-circle"></i>
                     @* <span>F.A.Q</span> *@
                     <span>Supplier</span>
@@ -308,7 +310,7 @@
             @* Supplier *@
 
             <li class="nav-item">
-                <a class="nav-link " href="/ListRegisterUser">
+                <a class="nav-link " href="/ListRegisterUser/Index">
                     <i class="bi bi-envelope"></i>
                     <span>User</span>
                 </a>
