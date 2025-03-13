@@ -1,5 +1,6 @@
 ﻿@using UITraining.Models.DTO
-@model LoginDTO
+@* @model LoginDTO *@
+@model UserAccessDTO
 
 
 @{
@@ -33,7 +34,7 @@
     <style>
         .input-group button {
             border: 1px solid #ced4da;
-            border-left: none; /* Hilangkan border kiri */
+            border-left: none; 
             background-color: #fff;
         }
 
@@ -141,13 +142,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Cek apakah ada pesan error
             const errorMessage = '@TempData["ErrorMessage"]';
             if (errorMessage) {
                 alert(errorMessage); // Tampilkan alert error
             }
 
-            // Cek apakah ada pesan sukses
             const successMessage = '@TempData["SuccessMessage"]';
             if (successMessage) {
                 alert(successMessage); // Tampilkan alert sukses

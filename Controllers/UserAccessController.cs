@@ -26,6 +26,45 @@ namespace UITraining.Controllers
             return View();
         }
 
+        // Baru Ditambahkan Untul User List \\
+
+
+        public IActionResult Index()
+        {
+            var data = _IUserAccess.GetlistUser();
+            return View(data);
+        }
+
+        public IActionResult EditUser(int id)
+        {
+            var data = _IUserAccess.GetUserById(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult EditUser(UserAccessDTO userAccessDTO)
+        {
+            var data = _IUserAccess.EditUser(userAccessDTO);
+            if (data)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var data = _IUserAccess.DeleteUser(id);
+            if (data)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return BadRequest("Gagal menghapus User.");
+        }
+
+        // ============== BATASAN  ============== \\
+
         //[HttpPost]
         //public IActionResult RegisterUser(UserAccessDTO userAccessDTO)
         //{
@@ -46,119 +85,23 @@ namespace UITraining.Controllers
         //}
 
 
-        // Handle proses login
-        //[HttpPost]
-        //public IActionResult Login(UserAccessDTO userAccessDTO)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(userAccessDTO); // Jika validasi gagal, kembalikan ke form login
-        //    }
-
-        //    try
-        //    {
-        //        var isValid = _IUserAccess.ValidateLogin(userAccessDTO.UserName, userAccessDTO.Password);
-        //        if (isValid)
-        //        {
-        //            // Redirect ke dashboard atau halaman lain setelah login berhasil
-        //            return RedirectToAction("Index", "Dashboard");
-        //        }
-
-        //        // Jika login gagal, tampilkan pesan error
-        //        ModelState.AddModelError("", "Username atau Password salah!");
-        //        return View(userAccessDTO);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError("", "Terjadi kesalahan saat login.");
-        //        return View(userAccessDTO);
-        //    }
-        //}
-
-
-        //[HttpPost]
-        //public IActionResult Login(LoginDTO loginDTO) // Ganti parameter menjadi LoginDTO
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(loginDTO); // Kembalikan ke halaman login jika validasi gagal
-        //    }
-
-        //    try
-        //    {
-        //        var isValid = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
-        //        if (isValid)
-        //        {
-        //            // Redirect ke halaman dashboard atau halaman lain setelah login berhasil
-        //            return RedirectToAction("Index", "Dashboard");
-        //        }
-
-        //        // Jika login gagal, tampilkan pesan error
-        //        ModelState.AddModelError("", "Username atau Password salah!");
-        //        return View(loginDTO);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Tangani kesalahan dan tampilkan pesan error
-        //        ModelState.AddModelError("", "Terjadi kesalahan saat login.");
-        //        return View(loginDTO);
-        //    }
-        //}
-
-        //[HttpPost]
-        //public IActionResult RegisterUser(UserAccessDTO userAccessDTO)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(userAccessDTO); // Jika validasi gagal, kembalikan ke form dengan pesan error
-        //    }
-
-        //    if (userAccessDTO.Password != userAccessDTO.MatchPassword)
-        //    {
-        //        ModelState.AddModelError("MatchPassword", "Password dan Konfirmasi Password harus sama!");
-        //        return View(userAccessDTO);
-        //    }
-
-        //    try
-        //    {
-        //        var isSuccess = _IUserAccess.InsertUserAccess(userAccessDTO);
-        //        if (isSuccess)
-        //        {
-        //            return RedirectToAction("Login", "UserAccess"); // Redirect jika berhasil
-        //        }
-
-        //        ModelState.AddModelError("", "Gagal mendaftarkan user. Silakan coba lagi.");
-        //        return View(userAccessDTO);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError("", "Terjadi kesalahan saat mendaftarkan user.");
-        //        return View(userAccessDTO);
-        //    }
-        //}
-
-
-
 
         [HttpPost]
-        public IActionResult Login(LoginDTO loginDTO)
+        public IActionResult Login(UserAccessDTO loginDTO)
         {
             try
             {
-                var isValid = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
-                if (isValid)
+                var datauser = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
+                if (datauser)
                 {
-                    // Redirect ke halaman dashboard atau halaman lain setelah login berhasil
                     return RedirectToAction("Index", "Dashboard");
                 }
 
-                // Jika login gagal, tampilkan pesan error
                 TempData["ErrorMessage"] = "Username atau Password salah!";
                 return View(loginDTO);
             }
             catch (Exception ex)
             {
-                // Tangani kesalahan dan tampilkan pesan error
                 TempData["ErrorMessage"] = "Terjadi kesalahan saat login.";
                 return View(loginDTO);
             }
@@ -189,8 +132,8 @@ namespace UITraining.Controllers
 
             try
             {
-                var isSuccess = _IUserAccess.InsertUserAccess(userAccessDTO);
-                if (isSuccess)
+                var datauser = _IUserAccess.InsertUserAccess(userAccessDTO);
+                if (datauser)
                 {
                     TempData["SuccessMessage"] = "Registrasi berhasil! Silakan login."; // Pesan sukses
                     return RedirectToAction("Login", "UserAccess"); // Redirect jika berhasil

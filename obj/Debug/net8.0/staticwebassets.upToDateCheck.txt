@@ -494,8 +494,11 @@ wwwroot\assets\vendor\tinymce\themes\silver\theme.min.js
 wwwroot\assets\vendor\tinymce\tinymce.d.ts
 wwwroot\assets\vendor\tinymce\tinymce.js
 wwwroot\assets\vendor\tinymce\tinymce.min.js
+wwwroot\css\IconViewPassword.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\ErrorNotification.js
+wwwroot\js\IconViewPassword.js
 wwwroot\js\PriceFormat.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

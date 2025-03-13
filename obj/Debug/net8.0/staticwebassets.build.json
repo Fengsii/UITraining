@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UVutKAL7KTNgP/Y/BGUes5kJhUj7ZUDteCaeZ/bd918=",
+  "Hash": "eSh7VlYDA8Gyj4weVb1S1IK7QnFhd/Ag4kvNkeS7aes=",
   "Source": "UITraining",
   "BasePath": "_content/UITraining",
   "Mode": "Default",
@@ -10475,6 +10475,27 @@
       "OriginalItemSpec": "wwwroot\\assets\\vendor\\tinymce\\tinymce.min.js"
     },
     {
+      "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\IconViewPassword.css",
+      "SourceId": "UITraining",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\",
+      "BasePath": "_content/UITraining",
+      "RelativePath": "css/IconViewPassword#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "x3pl33hieq",
+      "Integrity": "XdHCAhAB9vNMF7DzvX6KoFJLQdwDsAo6djtfuJo9sPI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\IconViewPassword.css"
+    },
+    {
       "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\site.css",
       "SourceId": "UITraining",
       "SourceType": "Discovered",
@@ -10515,6 +10536,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\ErrorNotification.js",
+      "SourceId": "UITraining",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\",
+      "BasePath": "_content/UITraining",
+      "RelativePath": "js/ErrorNotification#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4nfuz1e0rz",
+      "Integrity": "sDG7eoQrvTF9iKQzFSGFXdw95ujQSl//ISEpt0KZTxE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ErrorNotification.js"
+    },
+    {
+      "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\IconViewPassword.js",
+      "SourceId": "UITraining",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\",
+      "BasePath": "_content/UITraining",
+      "RelativePath": "js/IconViewPassword#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "obc5tft61g",
+      "Integrity": "pPY1u24xcuVOBM80DX2VUfP0kktZ1k6zAoN5a7MfH3c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\IconViewPassword.js"
     },
     {
       "Identity": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
@@ -52430,6 +52493,88 @@
       ]
     },
     {
+      "Route": "css/IconViewPassword.css",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\IconViewPassword.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "268"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XdHCAhAB9vNMF7DzvX6KoFJLQdwDsAo6djtfuJo9sPI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XdHCAhAB9vNMF7DzvX6KoFJLQdwDsAo6djtfuJo9sPI="
+        }
+      ]
+    },
+    {
+      "Route": "css/IconViewPassword.x3pl33hieq.css",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\IconViewPassword.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "268"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XdHCAhAB9vNMF7DzvX6KoFJLQdwDsAo6djtfuJo9sPI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "x3pl33hieq"
+        },
+        {
+          "Name": "label",
+          "Value": "css/IconViewPassword.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XdHCAhAB9vNMF7DzvX6KoFJLQdwDsAo6djtfuJo9sPI="
+        }
+      ]
+    },
+    {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -52590,6 +52735,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "js/ErrorNotification.4nfuz1e0rz.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\ErrorNotification.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "479"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDG7eoQrvTF9iKQzFSGFXdw95ujQSl//ISEpt0KZTxE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4nfuz1e0rz"
+        },
+        {
+          "Name": "label",
+          "Value": "js/ErrorNotification.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sDG7eoQrvTF9iKQzFSGFXdw95ujQSl//ISEpt0KZTxE="
+        }
+      ]
+    },
+    {
+      "Route": "js/ErrorNotification.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\ErrorNotification.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "479"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDG7eoQrvTF9iKQzFSGFXdw95ujQSl//ISEpt0KZTxE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sDG7eoQrvTF9iKQzFSGFXdw95ujQSl//ISEpt0KZTxE="
+        }
+      ]
+    },
+    {
+      "Route": "js/IconViewPassword.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\IconViewPassword.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "556"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pPY1u24xcuVOBM80DX2VUfP0kktZ1k6zAoN5a7MfH3c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pPY1u24xcuVOBM80DX2VUfP0kktZ1k6zAoN5a7MfH3c="
+        }
+      ]
+    },
+    {
+      "Route": "js/IconViewPassword.obc5tft61g.js",
+      "AssetFile": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\IconViewPassword.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "556"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pPY1u24xcuVOBM80DX2VUfP0kktZ1k6zAoN5a7MfH3c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Mar 2025 01:17:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "obc5tft61g"
+        },
+        {
+          "Name": "label",
+          "Value": "js/IconViewPassword.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pPY1u24xcuVOBM80DX2VUfP0kktZ1k6zAoN5a7MfH3c="
         }
       ]
     },

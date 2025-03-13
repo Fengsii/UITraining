@@ -1989,12 +1989,24 @@
       "PackagePath": "staticwebassets\\assets\\vendor\\tinymce\\tinymce.min.js"
     },
     {
+      "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\IconViewPassword.css",
+      "PackagePath": "staticwebassets\\css\\IconViewPassword.css"
+    },
+    {
       "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\ErrorNotification.js",
+      "PackagePath": "staticwebassets\\js\\ErrorNotification.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\IconViewPassword.js",
+      "PackagePath": "staticwebassets\\js\\IconViewPassword.js"
     },
     {
       "Id": "C:\\Users\\DELL 7390\\Documents\\CSharp Lanjutan\\UITraining\\wwwroot\\js\\PriceFormat.js",
