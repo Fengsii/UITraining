@@ -58,8 +58,8 @@
                                         <td>@data.UserStatus</td>
                                         <td>
                                             <!-- Action buttons column -->
-                                            <a href="@Url.Action("EditUser", "ListRegisterUser", new { id = data.Id })" class="btn btn-sm btn-info">Update</a>
-                                            <form method="post" action="@Url.Action("Delete", "ListRegisterUser")" style="display:inline">
+                                            <a href="@Url.Action("EditUser", "UserAccess", new { id = data.Id })" class="btn btn-sm btn-info">Update</a>
+                                            <form method="post" action="@Url.Action("Delete", "UserAccess")" style="display:inline">
                                                 <input type="hidden" name="id" value="@data.Id" />
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?');">Delete</button>
                                             </form>
