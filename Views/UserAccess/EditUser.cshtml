@@ -32,7 +32,7 @@
 
                         <!-- Horizontal Form -->
                         @* asp-action="Edit" harus edit *@
-                        <form asp-controller="ListRegisterUser" asp-action="EditUser" method="post">
+                        <form asp-controller="UserAccess" asp-action="EditUser" method="post">
                             <div class="row mb-3" hidden>
                                 <label for="Id" class="col-sm-2 col-form-label">Id</label>
                                 <div class="col-sm-10">
@@ -57,12 +57,6 @@
                                     <input type="text" class="form-control" id="text" asp-for="Password" readonly>
                                 </div>
                             </div>
-                            @* <div class="row mb-3"> *@
-                            @*     <label for="Stock" class="col-sm-2 col-form-label">MatchPassword</label> *@
-                            @*     <div class="col-sm-10"> *@
-                            @*         <input type="text" class="form-control" id="text" asp-for="MatchPassword"> *@
-                            @*     </div> *@
-                            @* </div> *@
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Status</label>
