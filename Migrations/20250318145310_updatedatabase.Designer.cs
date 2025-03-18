@@ -12,8 +12,8 @@ using UITraining.Models;
 namespace UITraining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250313065530_addUserStatus")]
-    partial class addUserStatus
+    [Migration("20250318145310_updatedatabase")]
+    partial class updatedatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,14 +103,19 @@ namespace UITraining.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Pwd_hash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserStatusDua")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

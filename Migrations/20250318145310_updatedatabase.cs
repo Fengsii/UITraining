@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UITraining.Migrations
 {
     /// <inheritdoc />
-    public partial class addUserStatus : Migration
+    public partial class updatedatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,11 +43,14 @@ namespace UITraining.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Salt = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Pwd_hash = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AccessDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UserStatus = table.Column<int>(type: "int", nullable: false),
-                    UserStatusDua = table.Column<int>(type: "int", nullable: false)
+                    UserStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -5,16 +5,22 @@ using UITraining.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using UITraining.Models.DB;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using UITraining.Helper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace UITraining.Services
 {
     public class UserAccessService : IUserAccess
     {
         private readonly ApplicationContext _conteks;
+        private readonly string _paper;
+        private readonly string _iteration;
 
 
-        public UserAccessService(ApplicationContext conteks)
+        public UserAccessService(ApplicationContext conteks, IConfiguration configuration)
         {
+            _paper = configuration.GetSection("Security:Papper").Value ?? "";
+            _iteration = configuration.GetSection("Security:Iteration").Value ?? "";
             _conteks = conteks;
         }
 
@@ -25,13 +31,19 @@ namespace UITraining.Services
             //    return false; 
             //}
 
+            //var UserExist = _conteks.UserAccesses.Where(x => x.UserName == dto.UserName).FirstOrDefault();
+            //if (UserExist != null) return false;
+            var GenerateSalt = Helper.Hasher.GenerateSalt();
             var user = new UserAccess
             {
                 Name = dto.Name,
                 UserName = dto.UserName,
-                Password = dto.Password,
+                Password = "*********",
                 AccessDate = DateTime.Now,
+                Salt = GenerateSalt,
                 UserStatus = GeneralStatus.GeneralStatusData.Published,
+                Pwd_hash = Hasher.ComputeHash(dto.Password, GenerateSalt, _paper, Convert.ToInt32(_iteration))
+
             };
 
             _conteks.Add(user);
@@ -44,16 +56,42 @@ namespace UITraining.Services
         
         public bool ValidateLogin(string username, string password)
         {
-            var user = _conteks.UserAccesses
-                .FirstOrDefault(x => x.UserName == username && x.Password == password && x.UserStatus != GeneralStatusData.delete);
-            if(user != null)
+            //var user = _conteks.UserAccesses
+            //    .FirstOrDefault(x => x.UserName == username && x.Password == password && x.UserStatus != GeneralStatusData.delete);
+            //if (user != null)
+            //{
+            //    user.AccessDate = DateTime.Now;
+            //    _conteks.SaveChanges();
+            //    return true;
+            //}
+
+            //return false;
+
+
+
+
+            var user = _conteks.UserAccesses.FirstOrDefault(x =>
+                x.UserName == username &&
+                x.UserStatus == GeneralStatus.GeneralStatusData.Published);
+
+            if (user == null)
             {
-                user.AccessDate = DateTime.Now;
-                _conteks.SaveChanges();
-                return true;
+                return false;
             }
 
-            return false;
+            var hashResult = Hasher.ComputeHash(password, user.Salt, _paper, Convert.ToInt32(_iteration));
+
+            if (hashResult == user.Pwd_hash && username == user.UserName  )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
         }
 
 
