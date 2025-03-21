@@ -7,15 +7,15 @@
     Layout = null;
 }
 
-@if (!ViewData.ModelState.IsValid)
-{
-    <div class="alert alert-danger">
-        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-        {
-            <p>@error.ErrorMessage</p>
-        }
-    </div>
-}
+@* @if (!ViewData.ModelState.IsValid) *@
+@* { *@
+@*     <div class="alert alert-danger"> *@
+@*         @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors)) *@
+@*         { *@
+@*             <p>@error.ErrorMessage</p> *@
+@*         } *@
+@*     </div> *@
+@* } *@
 
 <!DOCTYPE html>
 <html lang="en">

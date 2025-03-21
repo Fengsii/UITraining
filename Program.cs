@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using UITraining.Interfaces;
 using UITraining.Models;
@@ -30,7 +31,18 @@ builder.Services.AddScoped<IUserAccess, UserAccessService>();
 
 
 
+// Tambahkan layanan autentikasi dengan cookie
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/UserAccess/Login"; // Redirect ke halaman login jika tidak terautentikasi
+        options.AccessDeniedPath = "/Home/AccessDenied"; // Redirect ke halaman akses ditolak jika tidak memiliki izin
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Waktu kedaluwarsa cookie
+        options.SlidingExpiration = true; // Perpanjang waktu kedaluwarsa cookie secara otomatis
+    });
 
+// Tambahkan layanan authorization
+builder.Services.AddAuthorization();
 
 
 
@@ -52,6 +64,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Pastikan ini dipanggil sebelum UseAuthorization
 app.UseAuthorization();
 
 app.MapControllerRoute(

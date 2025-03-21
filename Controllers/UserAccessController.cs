@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using UITraining.Interfaces;
 using UITraining.Models;
 using UITraining.Models.DB;
@@ -86,26 +90,69 @@ namespace UITraining.Controllers
 
 
 
-        [HttpPost]
-        public IActionResult Login(UserAccessDTO loginDTO)
-        {
-            try
-            {
-                var datauser = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
-                if (datauser)
-                {
-                    return RedirectToAction("Index", "Dashboard");
-                }
+        //[HttpPost]
+        //public IActionResult Login(UserAccessDTO loginDTO)
+        //{
+        //    try
+        //    {
+        //        var datauser = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
+        //        if (datauser)
+        //        {
+        //            return RedirectToAction("Index", "Dashboard");
+        //        }
 
-                TempData["ErrorMessage"] = "Username atau Password salah!";
-                return View(loginDTO);
-            }
-            catch (Exception ex)
+        //        TempData["ErrorMessage"] = "Username atau Password salah!";
+        //        return View(loginDTO);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["ErrorMessage"] = "Terjadi kesalahan saat login.";
+        //        return View(loginDTO);
+        //    }
+        //}
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(UserAccessDTO loginDTO)
+        {
+            var datauser = _IUserAccess.ValidateLogin(loginDTO.UserName, loginDTO.Password);
+            if (datauser)
             {
-                TempData["ErrorMessage"] = "Terjadi kesalahan saat login.";
-                return View(loginDTO);
+                var user = _conteks.UserAccesses.FirstOrDefault(x => x.UserName == loginDTO.UserName);
+
+                var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                new Claim("UserId", user.Id.ToString())
+            };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return RedirectToAction("Index", "Dashboard");
             }
+
+            TempData["ErrorMessage"] = "Username atau Password salah!";
+            return View(loginDTO);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "UserAccess");
+        }
+
+
+
+
+
+
 
         [HttpPost]
         public IActionResult RegisterUser(UserAccessDTO userAccessDTO)
