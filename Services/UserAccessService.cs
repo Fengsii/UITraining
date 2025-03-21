@@ -33,12 +33,13 @@ namespace UITraining.Services
 
             //var UserExist = _conteks.UserAccesses.Where(x => x.UserName == dto.UserName).FirstOrDefault();
             //if (UserExist != null) return false;
+
+
             var GenerateSalt = Helper.Hasher.GenerateSalt();
             var user = new UserAccess
             {
                 Name = dto.Name,
                 UserName = dto.UserName,
-                Password = "*********",
                 AccessDate = DateTime.Now,
                 Salt = GenerateSalt,
                 UserStatus = GeneralStatus.GeneralStatusData.Published,
@@ -90,8 +91,6 @@ namespace UITraining.Services
                 return false;
             }
 
-
-
         }
 
 
@@ -102,8 +101,8 @@ namespace UITraining.Services
                 Id = x.Id,
                 Name = x.Name,
                 UserName = x.UserName,
-                Password = x.Password,
-                MatchPassword = x.Password,
+                Password = "*******",
+                MatchPassword = "*******",
                 UserStatus = x.UserStatus
 
             }).ToList();
