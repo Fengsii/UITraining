@@ -1,6 +1,6 @@
 ﻿@using UITraining.Models.DTO
 @* @model LoginDTO *@
-@model UserAccessDTO
+@model LoginDTO
 
 
 @{
@@ -34,17 +34,17 @@
     <style>
         .input-group button {
             border: 1px solid #ced4da;
-            border-left: none; 
+            border-left: none;
             background-color: #fff;
         }
 
-        .input-group button:hover {
-            background-color: #f8f9fa;
-        }
+            .input-group button:hover {
+                background-color: #f8f9fa;
+            }
 
-        .input-group button i {
-            font-size: 1.2rem;
-        }
+            .input-group button i {
+                font-size: 1.2rem;
+            }
     </style>
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -88,7 +88,7 @@
                                     <form class="row g-3 needs-validation" asp-controller="UserAccess" asp-action="Login" method="post" novalidate>
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
-                                            <input type="text" name="username" asp-for="UserName" class="form-control" id="yourUsername" required>
+                                            <input type="text" name="username" asp-for="Username" class="form-control" id="yourUsername" required>
                                             <div class="invalid-feedback">Please input a username.</div>
                                         </div>
 

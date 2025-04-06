@@ -81,6 +81,63 @@ namespace UITraining.Migrations
                     b.ToTable("Suppliers");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 6, 6, 25, 27, 759, DateTimeKind.Utc).AddTicks(2444),
+                            Email = "admin@example.com",
+                            Name = "Administrator",
+                            PasswordHash = "EffGMEXzSpnrgJEma0w2xJex9/c7gOoteRBOoioiI40c7Jwpi9ZWIcV1CwIXoTwBqNWMhh4Ebo2pw6SNz/n+ag==",
+                            Role = "Admin",
+                            Salt = "rLymIHox8ue8x4jJkejpQA==",
+                            UserStatus = 0,
+                            Username = "admin"
+                        });
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.UserAccess", b =>
                 {
                     b.Property<int>("Id")
@@ -116,6 +173,22 @@ namespace UITraining.Migrations
                     b.ToTable("UserAccesses");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.UserBalance", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserBalances");
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.Product", b =>
                 {
                     b.HasOne("UITraining.Models.DB.Supplier", "Supplier")
@@ -127,9 +200,26 @@ namespace UITraining.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.UserBalance", b =>
+                {
+                    b.HasOne("UITraining.Models.DB.User", "User")
+                        .WithOne("Balance")
+                        .HasForeignKey("UITraining.Models.DB.UserBalance", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.User", b =>
+                {
+                    b.Navigation("Balance")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -25,6 +25,7 @@ builder.Services.AddDbContext<ApplicationContext>(
 builder.Services.AddScoped<IProduct,ProductService>();
 builder.Services.AddScoped<ISupplier, SupplierService>();
 builder.Services.AddScoped<IUserAccess, UserAccessService>();
+builder.Services.AddScoped<IAuth, AuthService>();
 
 
 
@@ -70,6 +71,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
 //pattern: "{controller=Dashboard}/{action=Index}/{id?}");
-pattern: "{controller=UserAccess}/{action=Login}/{id?}");
+//pattern: "{controller=UserAccess}/{action=Login}/{id?}");
+pattern: "{controller=Admin}/{action=Register}/{id?}");
 
 app.Run();

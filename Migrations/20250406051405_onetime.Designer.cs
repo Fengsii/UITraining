@@ -12,8 +12,8 @@ using UITraining.Models;
 namespace UITraining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250318145310_updatedatabase")]
-    partial class updatedatabase
+    [Migration("20250406051405_onetime")]
+    partial class onetime
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,63 @@ namespace UITraining.Migrations
                     b.ToTable("Suppliers");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 6, 5, 14, 4, 572, DateTimeKind.Utc).AddTicks(2987),
+                            Email = "admin@example.com",
+                            Name = "Administrator",
+                            PasswordHash = "1gCprDxV7KFn1tZH+c/PjGm1B0vI1FRaYSJePuQjsdWdsa+ArOXWXtPkhWuUafwnZIGtASV1V5zsbMhThHdwbQ==",
+                            Role = "Admin",
+                            Salt = "EJ1QvfquUhhAGZH1dKJ3/A==",
+                            UserStatus = 0,
+                            Username = "admin"
+                        });
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.UserAccess", b =>
                 {
                     b.Property<int>("Id")
@@ -96,10 +153,6 @@ namespace UITraining.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -123,6 +176,22 @@ namespace UITraining.Migrations
                     b.ToTable("UserAccesses");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.UserBalance", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserBalances");
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.Product", b =>
                 {
                     b.HasOne("UITraining.Models.DB.Supplier", "Supplier")
@@ -134,9 +203,26 @@ namespace UITraining.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.UserBalance", b =>
+                {
+                    b.HasOne("UITraining.Models.DB.User", "User")
+                        .WithOne("Balance")
+                        .HasForeignKey("UITraining.Models.DB.UserBalance", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.User", b =>
+                {
+                    b.Navigation("Balance")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
