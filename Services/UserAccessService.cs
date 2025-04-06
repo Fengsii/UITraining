@@ -43,8 +43,6 @@ namespace UITraining.Services
 
             return true;
         }
-
-
         
         public bool ValidateLogin(string username, string password)
         {
@@ -70,7 +68,6 @@ namespace UITraining.Services
             }
 
         }
-
 
         public List<UserAccessDTO> GetlistUser()
         {
@@ -115,9 +112,6 @@ namespace UITraining.Services
             _conteks.SaveChanges();
             return true;
         }
-
-
-       
 
         public bool DeleteUser(int id)
         {

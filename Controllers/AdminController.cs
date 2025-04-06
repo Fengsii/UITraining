@@ -94,6 +94,49 @@ namespace UITraining.Controllers
             return View(loginDTO);
         }
 
+        //[HttpPost]
+        //public async Task<IActionResult> Register(RegisterDTO registerDTO)
+        //{
+        //    if (registerDTO.Password.Length < 7)
+        //    {
+        //        TempData["ErrorMessage"] = "Password minimal 7 karakter";
+        //        return View(registerDTO);
+        //    }
+
+        //    if (registerDTO.Password != registerDTO.ConfirmPassword)
+        //    {
+        //        TempData["ErrorMessage"] = "Password dan Konfirmasi Password harus sama!";
+        //        return View(registerDTO);
+        //    }
+
+        //    var existingUser = await _conteks.Users
+        //        .FirstOrDefaultAsync(x => x.Username == registerDTO.Username);
+
+        //    if (existingUser != null)
+        //    {
+        //        TempData["ErrorMessage"] = "Username sudah digunakan. Silakan pilih username lain.";
+        //        return View(registerDTO);
+        //    }
+
+        //    try
+        //    {
+        //        var result = await _iauth.Register(registerDTO);
+        //        if (result)
+        //        {
+        //            TempData["SuccessMessage"] = "Registrasi berhasil! Silakan login.";
+        //            return RedirectToAction("LoginUser");
+        //        }
+
+        //        TempData["ErrorMessage"] = "Gagal mendaftarkan user. Silakan coba lagi.";
+        //        return View(registerDTO);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["ErrorMessage"] = "Terjadi kesalahan saat mendaftarkan user.";
+        //        return View(registerDTO);
+        //    }
+        //}
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
@@ -110,11 +153,11 @@ namespace UITraining.Controllers
             }
 
             var existingUser = await _conteks.Users
-                .FirstOrDefaultAsync(x => x.Username == registerDTO.Username);
+                .FirstOrDefaultAsync(x => x.Username == registerDTO.Username || x.Email == registerDTO.Email);
 
             if (existingUser != null)
             {
-                TempData["ErrorMessage"] = "Username sudah digunakan. Silakan pilih username lain.";
+                TempData["ErrorMessage"] = "Username atau Email sudah digunakan. Silakan pilih yang lain.";
                 return View(registerDTO);
             }
 
@@ -132,10 +175,18 @@ namespace UITraining.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Terjadi kesalahan saat mendaftarkan user.";
+                // Log exception untuk debugging
+                Console.WriteLine($"Error registrasi: {ex.Message}");
+                // Log juga inner exception jika ada
+                if (ex.InnerException != null)
+                    Console.WriteLine($"Inner exception: {ex.InnerException.Message}");
+
+                TempData["ErrorMessage"] = $"Terjadi kesalahan saat mendaftarkan user: {ex.Message}";
                 return View(registerDTO);
             }
         }
+
+
 
     }
 }

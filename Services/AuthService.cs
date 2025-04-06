@@ -22,35 +22,82 @@ namespace UITraining.Services
             _conteks = conteks;
         }
 
+        //public async Task<bool> Register(RegisterDTO registerDTO)
+        //{
+        //    // Cek apakah username/email sudah dipakai
+        //    if (await _conteks.Users.AnyAsync(u => u.Username == registerDTO.Username || u.Email == registerDTO.Email))
+        //        return false;
+
+        //    var salt = Hasher.GenerateSalt();
+
+        //    var user = new User
+        //    {
+        //        Name = registerDTO.Name,
+        //        Username = registerDTO.Username,
+        //        Email = registerDTO.Email,
+        //        Salt = salt,
+        //        PasswordHash = Hasher.ComputeHash(registerDTO.Password, salt, _paper, Convert.ToInt32(_iteration)),
+        //        Role = "User", // Default role
+        //        CreatedAt = DateTime.UtcNow,    
+        //        UserStatus = GeneralStatus.GeneralStatusData.Published
+        //    };
+
+        //    _conteks.Users.Add(user);
+        //    await _conteks.SaveChangesAsync();
+
+        //    // Buat saldo default
+        //    _conteks.UserBalances.Add(new UserBalance { UserId = user.Id });
+        //    await _conteks.SaveChangesAsync();
+
+        //    return true;
+        //}
+
         public async Task<bool> Register(RegisterDTO registerDTO)
         {
-            // Cek apakah username/email sudah dipakai
-            if (await _conteks.Users.AnyAsync(u => u.Username == registerDTO.Username || u.Email == registerDTO.Email))
-                return false;
-
-            var salt = Hasher.GenerateSalt();
-
-            var user = new User
+            try
             {
-                Name = registerDTO.Name,
-                Username = registerDTO.Username,
-                Email = registerDTO.Email,
-                Salt = salt,
-                PasswordHash = Hasher.ComputeHash(registerDTO.Password, salt, _paper, Convert.ToInt32(_iteration)),
-                Role = "User", // Default role
-                CreatedAt = DateTime.UtcNow,    
-                UserStatus = GeneralStatus.GeneralStatusData.Published
-            };
+                // Cek apakah username/email sudah dipakai
+                if (await _conteks.Users.AnyAsync(u => u.Username == registerDTO.Username || u.Email == registerDTO.Email))
+                    return false;
 
-            _conteks.Users.Add(user);
-            await _conteks.SaveChangesAsync();
+                var salt = Hasher.GenerateSalt();
 
-            // Buat saldo default
-            _conteks.UserBalances.Add(new UserBalance { UserId = user.Id });
-            await _conteks.SaveChangesAsync();
+                var user = new User
+                {
+                    Name = registerDTO.Name,
+                    Username = registerDTO.Username,
+                    Email = registerDTO.Email,
+                    Salt = salt,
+                    PasswordHash = Hasher.ComputeHash(registerDTO.Password, salt, _paper, Convert.ToInt32(_iteration)),
+                    Role = "User", // Default role
+                    CreatedAt = DateTime.UtcNow,
+                    UserStatus = GeneralStatus.GeneralStatusData.Published
+                };
 
-            return true;
+                _conteks.Users.Add(user);
+                await _conteks.SaveChangesAsync();
+
+                // Buat saldo default
+                _conteks.UserBalances.Add(new UserBalance { UserId = user.Id });
+                await _conteks.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log exception
+                Console.WriteLine($"Error di AuthService.Register: {ex.Message}");
+                if (ex.InnerException != null)
+                    Console.WriteLine($"Inner exception: {ex.InnerException.Message}");
+
+                throw; // Lempar kembali exception untuk ditangani pemanggil
+            }
         }
+
+
+
+
+
 
         public async Task<(bool Success, string Role, int UserId)> Login(LoginDTO loginDTO)
         {
