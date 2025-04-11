@@ -14,8 +14,6 @@ namespace UITraining.Models.DB
         public string PasswordHash { get; set; } // Di-hash
         public string Role { get; set; } // "Admin" atau "User"
         public GeneralStatusData UserStatus { get; set; }
-
-
         public DateTime CreatedAt { get; set; }
 
         // Navigation properties

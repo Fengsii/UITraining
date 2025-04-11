@@ -1,4 +1,76 @@
-﻿
+﻿@* <!DOCTYPE html> *@
+@* <html lang="en"> *@
+@* <head> *@
+@*     <meta charset="utf-8"> *@
+@*     <meta content="width=device-width, initial-scale=1.0" name="viewport"> *@
+@*     <title>@ViewData["Title"] - My Application</title> *@
+
+@*     <!-- Favicons --> *@
+@*     <link href="~/assets/img/favicon.png" rel="icon"> *@
+@*     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> *@
+
+@*     <!-- Google Fonts --> *@
+@*     <link href="https://fonts.gstatic.com" rel="preconnect"> *@
+@*     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> *@
+
+@*     <!-- Vendor CSS Files --> *@
+@*     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> *@
+@*     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"> *@
+@*     <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"> *@
+
+@*     <!-- Template Main CSS File --> *@
+@*     <link href="~/assets/css/style.css" rel="stylesheet"> *@
+
+@*     <style> *@
+@*         .auth-container { *@
+@*             min-height: 100vh; *@
+@*             background-color: #f6f9ff; *@
+@*         } *@
+
+@*         .auth-card { *@
+@*             border-radius: 10px; *@
+@*             box-shadow: 0 0 20px rgba(0,0,0,0.1); *@
+@*         } *@
+
+@*         .input-group button { *@
+@*             border: 1px solid #ced4da; *@
+@*             border-left: none; *@
+@*             background-color: #fff; *@
+@*         } *@
+
+@*             .input-group button:hover { *@
+@*                 background-color: #f8f9fa; *@
+@*             } *@
+
+@*             .input-group button i { *@
+@*                 font-size: 1.2rem; *@
+@*             } *@
+@*     </style> *@
+@* </head> *@
+
+@* <body> *@
+@*     <div class="auth-container d-flex flex-column align-items-center justify-content-center py-4"> *@
+@*         <div class="container"> *@
+@*             @RenderBody() *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <!-- Vendor JS Files --> *@
+@*     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> *@
+
+@*     <!-- Template Main JS File --> *@
+@*     <script src="~/assets/js/main.js"></script> *@
+
+@*     @await RenderSectionAsync("Scripts", required: false) *@
+@* </body> *@
+@* </html> *@
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -279,7 +351,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-               @*  <a class="nav-link " href="@Url.Action("Index","Dashboard")"> *@
+                @*  <a class="nav-link " href="@Url.Action("Index","Dashboard")"> *@
                 <a class="nav-link " href="/Dashboard/Index">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
@@ -288,15 +360,15 @@
 
 
             <li class="nav-item">
-               @*  <a class="nav-link " href="@Url.Action("Index","Product")"> *@
+                @*  <a class="nav-link " href="@Url.Action("Index","Product")"> *@
                 <a class="nav-link " href="/Product/Index">
-                @* <a class="nav-link " href="/Product"> *@
-                @*     @Url.Action("RegisterUser", "UserAccess") *@
+                    @* <a class="nav-link " href="/Product"> *@
+                    @*     @Url.Action("RegisterUser", "UserAccess") *@
                     <i class="bi bi-grid"></i>
                     <span>Product</span>
                 </a>
             </li><!-- End Product Nav -->
-           
+
 
 
 
@@ -313,7 +385,7 @@
             @* Supplier *@
 
             <li class="nav-item">
-                <a class="nav-link " href="/UserAccess/Index">
+                <a class="nav-link " href="/Admin/Index">
                     <i class="bi bi-envelope"></i>
                     <span>User List</span>
                 </a>
@@ -351,7 +423,6 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-
     @RenderBody();
 
 
@@ -392,7 +463,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 
-  
+
 
 </body>
 

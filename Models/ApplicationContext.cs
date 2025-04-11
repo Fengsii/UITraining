@@ -23,6 +23,9 @@ namespace UITraining.Models
         // User tables
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserBalance> UserBalances { get; set; }
+        public virtual DbSet<Product2> Product2s { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<ProductSize> ProductSizes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +41,30 @@ namespace UITraining.Models
                 .HasOne(ub => ub.User)
                 .WithOne(u => u.Balance)
                 .HasForeignKey<UserBalance>(ub => ub.UserId);
+
+            // Product-Category one-to-many relationship
+            modelBuilder.Entity<Product2>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId);
+
+            // Product-ProductSize one-to-many relationship
+            modelBuilder.Entity<ProductSize>()
+                .HasOne(ps => ps.Product)
+                .WithMany(p => p.Sizes)
+                .HasForeignKey(ps => ps.ProductId);
+
+            // Review-User many-to-one relationship
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId);
+
+            // Review-Product many-to-one relationship
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Product)
+                .WithMany(p => p.Reviews)
+                .HasForeignKey(r => r.ProductId);
 
             // Seeding admin default with SHA512 hashing
             var pepper = _configuration["Security:Papper"];

@@ -84,10 +84,23 @@ namespace UITraining.Controllers
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
 
+                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                //// Redirect ke dashboard admin atau home user
+                ////return RedirectToAction("Index", role == "Admin" ? "Dashboard" : "Home");
+                //return RedirectToAction("Index", "Dashboard");
+
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                // Redirect ke dashboard admin atau home user
-                return RedirectToAction("Index", role == "Admin" ? "Dashboard" : "Home");
+                // Redirect berdasarkan peran
+                if (role == "Admin")
+                {
+                    return RedirectToAction("Index", "Dashboard"); // Halaman Admin
+                }
+                else if (role == "User")
+                {
+                    return RedirectToAction("Index", "UserHome"); // Halaman User
+                }
             }
 
             TempData["ErrorMessage"] = "Username atau Password salah!";
