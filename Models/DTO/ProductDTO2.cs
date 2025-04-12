@@ -20,5 +20,7 @@ namespace UITraining.Models.DTO
         public string CategoryName { get; set; }
         public int CategoryId { get; set; } // Foreign key ke Category
         public GeneralStatusData ProductStatus { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

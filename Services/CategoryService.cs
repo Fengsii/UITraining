@@ -23,7 +23,8 @@ namespace UITraining.Services
                 {
                     Id = x.Id,
                     CategoryName = x.CategoryName,
-                    Description = x.Description
+                    Description = x.Description,
+                    CategoryStatus = x.CategoryStatus
                 }).ToList();
 
             return data;
@@ -52,6 +53,7 @@ namespace UITraining.Services
             data.CategoryName = categoryDTO.CategoryName;
             data.Description = categoryDTO.Description;
             data.CategoryStatus = categoryDTO.CategoryStatus;
+            data.UpdatedAt = DateTime.Now;
 
             _conteks.Categories.Update(data);
             _conteks.SaveChanges();
@@ -79,7 +81,8 @@ namespace UITraining.Services
             data.CategoryName = categoryDTO.CategoryName;
             data.Description = categoryDTO.Description;
             data.CategoryStatus = categoryDTO.CategoryStatus;
-            
+            data.CreatedAt = DateTime.Now;
+
             _conteks.Categories.Add(data);
             _conteks.SaveChanges();
             return true;

@@ -4,6 +4,7 @@ using UITraining.Models.DB;
 using UITraining.Models.DTO;
 using UITraining.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UITraining.Services
 {
@@ -64,6 +65,7 @@ namespace UITraining.Services
             data.IsPromo = productDTO2.IsPromo;
             data.Discount = productDTO2.Discount;
             data.ProductStatus = productDTO2.ProductStatus;
+            data.UpdatedAt = DateTime.Now;
 
             _conteks.Product2s.Update(data);
             _conteks.SaveChanges();
@@ -96,12 +98,26 @@ namespace UITraining.Services
             data.Discount = productDTO2.Discount;
             data.ProductStatus = productDTO2.ProductStatus;
             data.CategoryId = productDTO2.CategoryId;
-
+            data.CreatedAt = DateTime.Now;
 
             _conteks.Product2s.Add(data);
             _conteks.SaveChanges();
             return true;
 
+        }
+
+        public List<SelectListItem> Product2s()
+        {
+            var datas = _conteks.Product2s
+                .Where(x => x.ProductStatus == GeneralStatusData.Published)
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList();
+
+
+            return datas;
         }
     }
 }

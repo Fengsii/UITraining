@@ -33,6 +33,10 @@ builder.Services.AddScoped<IUser, UserService>(); // Mendaftarkan UserService
 builder.Services.AddScoped<IProduct2, Product2Service>();
 builder.Services.AddScoped<ICatagory, CategoryService>();
 builder.Services.AddScoped<IReview, ReviewService>();
+builder.Services.AddScoped<IProductSize, ProductSizeService>();
+builder.Services.AddScoped<ICart, CartService>();
+builder.Services.AddScoped<IOrder, OrderService>();
+builder.Services.AddScoped<IOrderDetail, OrderDetailService>();
 
 
 

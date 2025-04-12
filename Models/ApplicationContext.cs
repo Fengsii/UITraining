@@ -26,6 +26,10 @@ namespace UITraining.Models
         public virtual DbSet<Product2> Product2s { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,6 +57,37 @@ namespace UITraining.Models
                 .HasOne(ps => ps.Product)
                 .WithMany(p => p.Sizes)
                 .HasForeignKey(ps => ps.ProductId);
+
+            // Cart-User many-to-one relationship
+            modelBuilder.Entity<Cart>()
+                .HasOne(c => c.User)
+                .WithMany()
+                .HasForeignKey(c => c.UserId);
+
+            // Cart-Product many-to-one relationship
+            modelBuilder.Entity<Cart>()
+                .HasOne(c => c.Product)
+                .WithMany()
+                .HasForeignKey(c => c.ProductId);
+
+            // Order-User many-to-one relationship
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.User)
+                .WithMany()
+                .HasForeignKey(o => o.UserId);
+
+            // OrderDetail-Order many-to-one relationship
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Order)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(od => od.OrderId);
+
+            // OrderDetail-Product many-to-one relationship
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Product)
+                .WithMany()
+                .HasForeignKey(od => od.ProductId);
+
 
             // Review-User many-to-one relationship
             modelBuilder.Entity<Review>()

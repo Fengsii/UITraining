@@ -18,5 +18,8 @@ namespace UITraining.Models.DB
 
         // Navigation properties
         public UserBalance Balance { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Cart> Carts { get; set; }
     }
 }

@@ -25,7 +25,8 @@ namespace UITraining.Models.DB
 
         // Navigation properties
         public ICollection<ProductSize> Sizes { get; set; } // Relasi ke ProductSize
-        //public ICollection<OrderDetail> OrderDetails { get; set; } // Relasi ke OrderDetail
+        public ICollection<OrderDetail> OrderDetails { get; set; } // Relasi ke OrderDetail
+        public ICollection<Cart> Carts { get; set; }
         public ICollection<Review> Reviews { get; set; } // Relasi ke Review
 
     }
