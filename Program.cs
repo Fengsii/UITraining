@@ -30,6 +30,9 @@ builder.Services.AddScoped<IUserAccess, UserAccessService>();
 builder.Services.AddScoped<IAuth, AuthService>();
 builder.Services.AddHttpContextAccessor(); // Untuk mengakses HttpContext
 builder.Services.AddScoped<IUser, UserService>(); // Mendaftarkan UserService
+builder.Services.AddScoped<IProduct2, Product2Service>();
+builder.Services.AddScoped<ICatagory, CategoryService>();
+builder.Services.AddScoped<IReview, ReviewService>();
 
 
 

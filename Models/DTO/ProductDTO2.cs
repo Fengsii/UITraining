@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using static UITraining.Models.GeneralStatus;
+﻿using static UITraining.Models.GeneralStatus;
+using System.ComponentModel.DataAnnotations.Schema;
+using UITraining.Models.DB;
 
-namespace UITraining.Models.DB
+namespace UITraining.Models.DTO
 {
-    public class Product2
+    public class ProductDTO2
     {
         public int Id { get; set; }
 
@@ -16,17 +17,8 @@ namespace UITraining.Models.DB
         public int Stock { get; set; } // Total stok keseluruhan
         public bool? IsPromo { get; set; } // Apakah produk sedang promo?
         public decimal? Discount { get; set; } // Diskon dalam persen (misal: 10 untuk 10%)
-
+        public string CategoryName { get; set; }
         public int CategoryId { get; set; } // Foreign key ke Category
-        public Category Category { get; set; }
         public GeneralStatusData ProductStatus { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
-        // Navigation properties
-        public ICollection<ProductSize> Sizes { get; set; } // Relasi ke ProductSize
-        //public ICollection<OrderDetail> OrderDetails { get; set; } // Relasi ke OrderDetail
-        public ICollection<Review> Reviews { get; set; } // Relasi ke Review
-
     }
 }

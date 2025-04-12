@@ -1,15 +1,12 @@
 ﻿using static UITraining.Models.GeneralStatus;
 
-namespace UITraining.Models.DB
+namespace UITraining.Models.DTO
 {
-    public class Category
+    public class CategoryDTO
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public GeneralStatusData CategoryStatus { get; set; }
-
-        // Navigation properties
-        public ICollection<Product2> Products { get; set; } // Relasi ke Product
     }
 }

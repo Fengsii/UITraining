@@ -91,7 +91,6 @@ namespace UITraining.Services
             }
 
             data.ProductStatus = GeneralStatusData.delete;
-            //_conteks.Products.Update(data);
             _conteks.SaveChanges();
             return true;
         }
