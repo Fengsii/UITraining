@@ -61,20 +61,20 @@ namespace UITraining.Models
             // Cart-User many-to-one relationship
             modelBuilder.Entity<Cart>()
                 .HasOne(c => c.User)
-                .WithMany()
+                .WithMany(u => u.Carts)
                 .HasForeignKey(c => c.UserId);
 
             // Cart-Product many-to-one relationship
             modelBuilder.Entity<Cart>()
-                .HasOne(c => c.Product)
-                .WithMany()
-                .HasForeignKey(c => c.ProductId);
+               .HasOne(c => c.Product)
+               .WithMany(p => p.Carts)
+               .HasForeignKey(c => c.ProductId);
 
             // Order-User many-to-one relationship
             modelBuilder.Entity<Order>()
-                .HasOne(o => o.User)
-                .WithMany()
-                .HasForeignKey(o => o.UserId);
+              .HasOne(o => o.User)
+              .WithMany(u => u.Orders)
+              .HasForeignKey(o => o.UserId);
 
             // OrderDetail-Order many-to-one relationship
             modelBuilder.Entity<OrderDetail>()
@@ -85,15 +85,14 @@ namespace UITraining.Models
             // OrderDetail-Product many-to-one relationship
             modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.Product)
-                .WithMany()
+                .WithMany(p => p.OrderDetails)
                 .HasForeignKey(od => od.ProductId);
-
 
             // Review-User many-to-one relationship
             modelBuilder.Entity<Review>()
-                .HasOne(r => r.User)
-                .WithMany()
-                .HasForeignKey(r => r.UserId);
+               .HasOne(r => r.User)
+               .WithMany(u => u.Reviews)
+               .HasForeignKey(r => r.UserId);
 
             // Review-Product many-to-one relationship
             modelBuilder.Entity<Review>()

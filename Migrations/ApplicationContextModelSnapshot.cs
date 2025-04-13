@@ -37,9 +37,6 @@ namespace UITraining.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("Product2Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -53,18 +50,11 @@ namespace UITraining.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Product2Id");
 
                     b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Carts");
                 });
@@ -124,14 +114,9 @@ namespace UITraining.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Orders");
                 });
@@ -154,9 +139,6 @@ namespace UITraining.Migrations
                     b.Property<decimal>("PriceAtPurchase")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int?>("Product2Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -170,8 +152,6 @@ namespace UITraining.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("Product2Id");
 
                     b.HasIndex("ProductId");
 
@@ -323,16 +303,11 @@ namespace UITraining.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Reviews");
                 });
@@ -407,12 +382,12 @@ namespace UITraining.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 12, 17, 31, 5, 294, DateTimeKind.Utc).AddTicks(5463),
+                            CreatedAt = new DateTime(2025, 4, 13, 9, 24, 11, 75, DateTimeKind.Utc).AddTicks(750),
                             Email = "admin@example.com",
                             Name = "Administrator",
-                            PasswordHash = "NMLcztxUkYv+q6ddORz+ilzp49rYQc7JQ+AS41bOT/OIpjp6KqC4gwny71t6b7it7P/8TQ/d/BHsSDnVphDiTA==",
+                            PasswordHash = "NuXEZLIh81t1IJRWykKXGpKMnhSv4w/+fu2DN4GdKkL53VqtjVi4uBpI405lRQNtKZHcnu8KYxKS4TWp6Iyflg==",
                             Role = "Admin",
-                            Salt = "kg6tXUQJ3GKcwPQlarJwLA==",
+                            Salt = "eBHaozKR94Kf75GfCDFUDw==",
                             UserStatus = 0,
                             Username = "admin"
                         });
@@ -471,25 +446,17 @@ namespace UITraining.Migrations
 
             modelBuilder.Entity("UITraining.Models.DB.Cart", b =>
                 {
-                    b.HasOne("UITraining.Models.DB.Product2", null)
-                        .WithMany("Carts")
-                        .HasForeignKey("Product2Id");
-
                     b.HasOne("UITraining.Models.DB.Product2", "Product")
-                        .WithMany()
+                        .WithMany("Carts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UITraining.Models.DB.User", "User")
-                        .WithMany()
+                        .WithMany("Carts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("UITraining.Models.DB.User", null)
-                        .WithMany("Carts")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("Product");
 
@@ -499,14 +466,10 @@ namespace UITraining.Migrations
             modelBuilder.Entity("UITraining.Models.DB.Order", b =>
                 {
                     b.HasOne("UITraining.Models.DB.User", "User")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("UITraining.Models.DB.User", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
@@ -519,12 +482,8 @@ namespace UITraining.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UITraining.Models.DB.Product2", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("Product2Id");
-
                     b.HasOne("UITraining.Models.DB.Product2", "Product")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -576,14 +535,10 @@ namespace UITraining.Migrations
                         .IsRequired();
 
                     b.HasOne("UITraining.Models.DB.User", "User")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("UITraining.Models.DB.User", null)
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("Product");
 

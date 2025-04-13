@@ -6,6 +6,7 @@ using UITraining.Helper;
 using UITraining.Models.DTO;
 using UITraining.Interfaces;
 using static UITraining.Models.GeneralStatus;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UITraining.Services
 {
@@ -182,6 +183,21 @@ namespace UITraining.Services
             _conteks.SaveChanges();
             return true;
         }
+
+        public List<SelectListItem> Users()
+        {
+            var datas = _conteks.Users
+                .Where(x => x.UserStatus == GeneralStatusData.Published)
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList();
+
+
+            return datas;
+        }
+
 
     }
 }
