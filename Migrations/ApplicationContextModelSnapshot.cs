@@ -382,12 +382,12 @@ namespace UITraining.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 13, 9, 24, 11, 75, DateTimeKind.Utc).AddTicks(750),
+                            CreatedAt = new DateTime(2025, 4, 14, 5, 21, 35, 967, DateTimeKind.Utc).AddTicks(8011),
                             Email = "admin@example.com",
                             Name = "Administrator",
-                            PasswordHash = "NuXEZLIh81t1IJRWykKXGpKMnhSv4w/+fu2DN4GdKkL53VqtjVi4uBpI405lRQNtKZHcnu8KYxKS4TWp6Iyflg==",
+                            PasswordHash = "3mOxXQdxu/oDjY0FfXvg1Wfh2QK+Bggv/4JAB3/kV97bqO86dyvQxOVUq3V+/kFJxooHKP6O3rTZaJIZNMcTLw==",
                             Role = "Admin",
-                            Salt = "eBHaozKR94Kf75GfCDFUDw==",
+                            Salt = "EiyWtmpMioxJs9EVGmwdhA==",
                             UserStatus = 0,
                             Username = "admin"
                         });

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UITraining.Migrations
 {
     /// <inheritdoc />
-    public partial class updatedatabaseandrelation : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -336,7 +336,7 @@ namespace UITraining.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "Email", "Name", "PasswordHash", "Role", "Salt", "UserStatus", "Username" },
-                values: new object[] { 1, new DateTime(2025, 4, 13, 9, 24, 11, 75, DateTimeKind.Utc).AddTicks(750), "admin@example.com", "Administrator", "NuXEZLIh81t1IJRWykKXGpKMnhSv4w/+fu2DN4GdKkL53VqtjVi4uBpI405lRQNtKZHcnu8KYxKS4TWp6Iyflg==", "Admin", "eBHaozKR94Kf75GfCDFUDw==", 0, "admin" });
+                values: new object[] { 1, new DateTime(2025, 4, 14, 5, 21, 35, 967, DateTimeKind.Utc).AddTicks(8011), "admin@example.com", "Administrator", "3mOxXQdxu/oDjY0FfXvg1Wfh2QK+Bggv/4JAB3/kV97bqO86dyvQxOVUq3V+/kFJxooHKP6O3rTZaJIZNMcTLw==", "Admin", "EiyWtmpMioxJs9EVGmwdhA==", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_ProductId",

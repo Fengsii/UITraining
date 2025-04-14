@@ -8,11 +8,11 @@ namespace UITraining.Models.DB
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; } = string.Empty;
         public int Stock { get; set; } // Total stok keseluruhan
         public bool? IsPromo { get; set; } // Apakah produk sedang promo?
         public decimal? Discount { get; set; } // Diskon dalam persen (misal: 10 untuk 10%)

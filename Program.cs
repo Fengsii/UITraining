@@ -22,9 +22,9 @@ builder.Services.AddDbContext<ApplicationContext>(
         .EnableDetailedErrors()
 );
 
-builder.Services.AddScoped<IProduct,ProductService>();
-builder.Services.AddScoped<ISupplier, SupplierService>();
-builder.Services.AddScoped<IUserAccess, UserAccessService>();
+//builder.Services.AddScoped<IProduct,ProductService>();
+//builder.Services.AddScoped<ISupplier, SupplierService>();
+//builder.Services.AddScoped<IUserAccess, UserAccessService>();
 
 //============== YANG BARU DITAMBAHKAN ==============\\
 builder.Services.AddScoped<IAuth, AuthService>();
@@ -32,11 +32,11 @@ builder.Services.AddHttpContextAccessor(); // Untuk mengakses HttpContext
 builder.Services.AddScoped<IUser, UserService>(); // Mendaftarkan UserService
 builder.Services.AddScoped<IProduct2, Product2Service>();
 builder.Services.AddScoped<ICatagory, CategoryService>();
-builder.Services.AddScoped<IReview, ReviewService>();
+//builder.Services.AddScoped<IReview, ReviewService>();
 builder.Services.AddScoped<IProductSize, ProductSizeService>();
-builder.Services.AddScoped<ICart, CartService>();
-builder.Services.AddScoped<IOrder, OrderService>();
-builder.Services.AddScoped<IOrderDetail, OrderDetailService>();
+//builder.Services.AddScoped<ICart, CartService>();
+//builder.Services.AddScoped<IOrder, OrderService>();
+//builder.Services.AddScoped<IOrderDetail, OrderDetailService>();
 
 
 

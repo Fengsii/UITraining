@@ -38,9 +38,33 @@ namespace UITraining.Services
         }
 
 
+        //public Product2 GetProduct2ById(int id)
+        //{
+        //    var data = _conteks.Product2s.Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete).FirstOrDefault();
+        //    if (data == null)
+        //    {
+        //        return new Product2();
+        //    }
+
+        //    return data;
+        //}
+
+        ////public Product GetProductById(int id)
+        ////{
+        ////    return _context.Product2s
+        ////        .Include(p => p.Sizes) // Include sizes to calculate stock if needed
+        ////        .FirstOrDefault(p => p.Id == id && p.ProductStatus != GeneralStatusData.delete);
+        ////}
+
         public Product2 GetProduct2ById(int id)
         {
-            var data = _conteks.Product2s.Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete).FirstOrDefault();
+            // Menggunakan Include untuk memuat data terkait (Sizes)
+            var data = _conteks.Product2s
+                .Include(p => p.Sizes) // Memuat data Sizes
+                .Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete)
+                .FirstOrDefault();
+
+            // Mengembalikan objek kosong jika data tidak ditemukan
             if (data == null)
             {
                 return new Product2();
@@ -61,7 +85,6 @@ namespace UITraining.Services
             data.Description = productDTO2.Description;
             data.Price = productDTO2.Price;
             data.Image = productDTO2.Image;
-            data.Stock = productDTO2.Stock;
             data.IsPromo = productDTO2.IsPromo;
             data.Discount = productDTO2.Discount;
             data.ProductStatus = productDTO2.ProductStatus;
@@ -93,7 +116,7 @@ namespace UITraining.Services
             data.Description = productDTO2.Description;
             data.Price = productDTO2.Price;
             data.Image = productDTO2.Image;
-            data.Stock = productDTO2.Stock;
+            data.Stock = 0;
             data.IsPromo = productDTO2.IsPromo;
             data.Discount = productDTO2.Discount;
             data.ProductStatus = productDTO2.ProductStatus;

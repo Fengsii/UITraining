@@ -1,4 +1,5 @@
-﻿using UITraining.Models.DB;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using UITraining.Models.DB;
 using UITraining.Models.DTO;
 
 namespace UITraining.Interfaces
@@ -10,5 +11,6 @@ namespace UITraining.Interfaces
         public bool EditProduct2(ProductDTO2 productDTO2);
         public bool DeleteProduct2(int id);
         public bool AddProduct2(ProductDTO2 productDTO2);
+        public List<SelectListItem> Product2s();
     }
 }
