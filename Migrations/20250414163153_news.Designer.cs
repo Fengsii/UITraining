@@ -12,8 +12,8 @@ using UITraining.Models;
 namespace UITraining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250414052136_new")]
-    partial class @new
+    [Migration("20250414163153_news")]
+    partial class news
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,15 +214,9 @@ namespace UITraining.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<decimal?>("Discount")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("IsPromo")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -232,9 +226,6 @@ namespace UITraining.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProductStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -385,12 +376,12 @@ namespace UITraining.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 14, 5, 21, 35, 967, DateTimeKind.Utc).AddTicks(8011),
+                            CreatedAt = new DateTime(2025, 4, 14, 16, 31, 53, 128, DateTimeKind.Utc).AddTicks(3824),
                             Email = "admin@example.com",
                             Name = "Administrator",
-                            PasswordHash = "3mOxXQdxu/oDjY0FfXvg1Wfh2QK+Bggv/4JAB3/kV97bqO86dyvQxOVUq3V+/kFJxooHKP6O3rTZaJIZNMcTLw==",
+                            PasswordHash = "5AKSN4g5JgCBG2ameIBiEj39lmM2E4QqhsH1+2m06gGVltH2hmUjvqYRp9bsyK21gKONRNNmXaZSzGy6roUMrQ==",
                             Role = "Admin",
-                            Salt = "EiyWtmpMioxJs9EVGmwdhA==",
+                            Salt = "fmpdN5wsRqjhHwsksO8HEg==",
                             UserStatus = 0,
                             Username = "admin"
                         });

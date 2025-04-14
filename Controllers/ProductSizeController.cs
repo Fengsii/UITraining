@@ -19,7 +19,7 @@ namespace UITraining.Controllers
         // GET: ProductController
         public ActionResult Index()
         {
-            var data = _productSize.GetlistProductSize();
+            var data = _productSize.GetListProductSize();
             return View(data);
         }
 
@@ -37,7 +37,7 @@ namespace UITraining.Controllers
         {
             if (productSizeDTO.Id == 0)
             {
-                var data = _productSize.AddProductSize(productSizeDTO);
+                var data = _productSize.AddProdutSize(productSizeDTO);
                 if (data)
                 {
                     return RedirectToAction(nameof(Index));

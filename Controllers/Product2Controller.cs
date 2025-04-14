@@ -19,7 +19,7 @@ namespace UITraining.Controllers
         // GET: ProductController
         public ActionResult Index()
         {
-            var data = _interface2.GetlistProduct2();
+            var data = _interface2.GetListProduct2();
             return View(data);
         }
 

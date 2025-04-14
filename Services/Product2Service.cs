@@ -1,25 +1,24 @@
-﻿using UITraining.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using static UITraining.Models.GeneralStatus;
 using UITraining.Models.DB;
 using UITraining.Models.DTO;
 using UITraining.Models;
+using UITraining.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UITraining.Services
 {
     public class Product2Service : IProduct2
     {
         private readonly ApplicationContext _conteks;
-
-        public Product2Service(ApplicationContext conteks)
+        public Product2Service(ApplicationContext context)
         {
-            _conteks = conteks;
+            _conteks = context;
         }
-        public List<ProductDTO2> GetlistProduct2()
+
+        public List<ProductDTO2> GetListProduct2()
         {
-            var data = _conteks.Product2s.Include(y => y.Category)
-                .Where(x => x.ProductStatus != GeneralStatus.GeneralStatusData.delete)
+            var data = _conteks.Product2s.Where(x => x.ProductStatus != GeneralStatus.GeneralStatusData.delete)
                 .Select(x => new ProductDTO2
                 {
                     Id = x.Id,
@@ -27,44 +26,17 @@ namespace UITraining.Services
                     Description = x.Description,
                     Price = x.Price,
                     Image = x.Image,
-                    Stock = x.Stock,
-                    IsPromo = x.IsPromo,
-                    Discount = x.Discount,
+                    CategoryName = x.Category.CategoryName,
                     ProductStatus = x.ProductStatus,
-                    CategoryName = x.Category.CategoryName
                 }).ToList();
 
             return data;
         }
 
 
-        //public Product2 GetProduct2ById(int id)
-        //{
-        //    var data = _conteks.Product2s.Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete).FirstOrDefault();
-        //    if (data == null)
-        //    {
-        //        return new Product2();
-        //    }
-
-        //    return data;
-        //}
-
-        ////public Product GetProductById(int id)
-        ////{
-        ////    return _context.Product2s
-        ////        .Include(p => p.Sizes) // Include sizes to calculate stock if needed
-        ////        .FirstOrDefault(p => p.Id == id && p.ProductStatus != GeneralStatusData.delete);
-        ////}
-
         public Product2 GetProduct2ById(int id)
         {
-            // Menggunakan Include untuk memuat data terkait (Sizes)
-            var data = _conteks.Product2s
-                .Include(p => p.Sizes) // Memuat data Sizes
-                .Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete)
-                .FirstOrDefault();
-
-            // Mengembalikan objek kosong jika data tidak ditemukan
+            var data = _conteks.Product2s.Where(x => x.Id == id && x.ProductStatus != GeneralStatusData.delete).FirstOrDefault();
             if (data == null)
             {
                 return new Product2();
@@ -80,13 +52,11 @@ namespace UITraining.Services
             {
                 return false;
             }
-            data.CategoryId = productDTO2.CategoryId;
+            data.Id = productDTO2.Id;
             data.Name = productDTO2.Name;
             data.Description = productDTO2.Description;
             data.Price = productDTO2.Price;
             data.Image = productDTO2.Image;
-            data.IsPromo = productDTO2.IsPromo;
-            data.Discount = productDTO2.Discount;
             data.ProductStatus = productDTO2.ProductStatus;
             data.UpdatedAt = DateTime.Now;
 
@@ -110,17 +80,15 @@ namespace UITraining.Services
 
         public bool AddProduct2(ProductDTO2 productDTO2)
         {
+
             var data = new Product2();
 
             data.Name = productDTO2.Name;
             data.Description = productDTO2.Description;
             data.Price = productDTO2.Price;
             data.Image = productDTO2.Image;
-            data.Stock = 0;
-            data.IsPromo = productDTO2.IsPromo;
-            data.Discount = productDTO2.Discount;
-            data.ProductStatus = productDTO2.ProductStatus;
             data.CategoryId = productDTO2.CategoryId;
+            data.ProductStatus = productDTO2.ProductStatus;
             data.CreatedAt = DateTime.Now;
 
             _conteks.Product2s.Add(data);
@@ -142,5 +110,7 @@ namespace UITraining.Services
 
             return datas;
         }
+
+        
     }
 }
