@@ -32,30 +32,91 @@ namespace UITraining.Controllers
             return View(data);
         }
 
+        //[HttpPost]
+        //public IActionResult Edit(ProductSizeDTO productSizeDTO)
+        //{
+        //    if (productSizeDTO.Id == 0)
+        //    {
+        //        var data = _productSize.AddProdutSize(productSizeDTO);
+        //        if (data)
+        //        {
+        //            return RedirectToAction(nameof(Index));
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        var data = _productSize.EditProductSize(productSizeDTO);
+        //        if (data)
+        //        {
+        //            return RedirectToAction(nameof(Index));
+        //        }
+
+        //    }
+        //    return View();
+
+        //}
+
+
+
         [HttpPost]
         public IActionResult Edit(ProductSizeDTO productSizeDTO)
         {
-            if (productSizeDTO.Id == 0)
+            try
             {
-                var data = _productSize.AddProdutSize(productSizeDTO);
-                if (data)
+                // Validasi ModelState
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Product2s = _product2.Product2s();
+                    return View(productSizeDTO);
+                }
+
+                bool result;
+
+                // Jika ID = 0, berarti operasi Add
+                if (productSizeDTO.Id == 0)
+                {
+                    result = _productSize.AddProdutSize(productSizeDTO);
+                }
+                else // Jika ID > 0, berarti operasi Edit
+                {
+                    result = _productSize.EditProductSize(productSizeDTO);
+                }
+
+                if (result)
                 {
                     return RedirectToAction(nameof(Index));
                 }
-
-            }
-            else
-            {
-                var data = _productSize.EditProductSize(productSizeDTO);
-                if (data)
+                else
                 {
-                    return RedirectToAction(nameof(Index));
+                    ViewBag.Product2s = _product2.Product2s();
+                    ModelState.AddModelError("", "Gagal menyimpan ukuran produk");
+                    return View(productSizeDTO);
                 }
-
             }
-            return View();
-
+            catch (ArgumentException argEx)
+            {
+                // Tangani error validasi
+                ViewBag.Product2s = _product2.Product2s();
+                ModelState.AddModelError("", argEx.Message);
+                return View(productSizeDTO);
+            }
+            catch (Exception ex)
+            {
+                // Tangani error umum
+                ViewBag.Product2s = _product2.Product2s();
+                ModelState.AddModelError("", $"Terjadi kesalahan: {ex.Message}");
+                return View(productSizeDTO);
+            }
         }
+
+
+
+
+
+
+
+
 
 
         [HttpPost]

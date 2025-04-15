@@ -20,10 +20,10 @@ namespace UITraining.Models.DB
         public DateTime UpdatedAt { get; set; }
 
         // Navigation properties
-        public ICollection<ProductSize> Sizes { get; set; } // Relasi ke ProductSize
-        public ICollection<OrderDetail> OrderDetails { get; set; } // Relasi ke OrderDetail
-        public ICollection<Cart> Carts { get; set; }
-        public ICollection<Review> Reviews { get; set; } // Relasi ke Review
+        public ICollection<ProductSize> Sizes { get; set; } = new List<ProductSize>();
+        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+        public ICollection<Cart> Carts { get; set; } = new List<Cart>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     }
 }

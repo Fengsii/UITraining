@@ -12,8 +12,8 @@ using UITraining.Models;
 namespace UITraining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250414163153_news")]
-    partial class news
+    [Migration("20250415051727_hhyy")]
+    partial class hhyy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,10 +210,6 @@ namespace UITraining.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -376,12 +372,12 @@ namespace UITraining.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 14, 16, 31, 53, 128, DateTimeKind.Utc).AddTicks(3824),
+                            CreatedAt = new DateTime(2025, 4, 15, 5, 17, 26, 809, DateTimeKind.Utc).AddTicks(6096),
                             Email = "admin@example.com",
                             Name = "Administrator",
-                            PasswordHash = "5AKSN4g5JgCBG2ameIBiEj39lmM2E4QqhsH1+2m06gGVltH2hmUjvqYRp9bsyK21gKONRNNmXaZSzGy6roUMrQ==",
+                            PasswordHash = "B7fWXbEbQIms1vWpffVOD+2sLX46ENvDafgclDwcFM8L28C2APGb7FjPcYEegn7iJYO0mMt5YdzpqGN93qir8Q==",
                             Role = "Admin",
-                            Salt = "fmpdN5wsRqjhHwsksO8HEg==",
+                            Salt = "bw7uSWCzG+6NcMPakua+YQ==",
                             UserStatus = 0,
                             Username = "admin"
                         });

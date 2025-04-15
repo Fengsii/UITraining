@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UITraining.Migrations
 {
     /// <inheritdoc />
-    public partial class news : Migration
+    public partial class hhyy : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -110,8 +110,6 @@ namespace UITraining.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Image = table.Column<string>(type: "longtext", nullable: false)
@@ -333,7 +331,7 @@ namespace UITraining.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "Email", "Name", "PasswordHash", "Role", "Salt", "UserStatus", "Username" },
-                values: new object[] { 1, new DateTime(2025, 4, 14, 16, 31, 53, 128, DateTimeKind.Utc).AddTicks(3824), "admin@example.com", "Administrator", "5AKSN4g5JgCBG2ameIBiEj39lmM2E4QqhsH1+2m06gGVltH2hmUjvqYRp9bsyK21gKONRNNmXaZSzGy6roUMrQ==", "Admin", "fmpdN5wsRqjhHwsksO8HEg==", 0, "admin" });
+                values: new object[] { 1, new DateTime(2025, 4, 15, 5, 17, 26, 809, DateTimeKind.Utc).AddTicks(6096), "admin@example.com", "Administrator", "B7fWXbEbQIms1vWpffVOD+2sLX46ENvDafgclDwcFM8L28C2APGb7FjPcYEegn7iJYO0mMt5YdzpqGN93qir8Q==", "Admin", "bw7uSWCzG+6NcMPakua+YQ==", 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_ProductId",
