@@ -4,6 +4,7 @@ using UITraining.Interfaces;
 using static UITraining.Models.GeneralStatus;
 using Microsoft.EntityFrameworkCore;
 using UITraining.Models.DTO;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UITraining.Services
 {
@@ -111,6 +112,18 @@ namespace UITraining.Services
 
         }
 
+        public List<SelectListItem> Products()
+        {
+            var datas = _conteks.Products
+                .Where(x => x.ProductStatus == GeneralStatusData.Active)
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList();
+
+            return datas;
+        }
 
 
     }

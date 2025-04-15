@@ -13,6 +13,7 @@ namespace UITraining.Models.DB
         public GeneralStatusData ProductStatus { get; set; }
         public int IdSupplier { get; set; }
         public Supplier Supplier { get; set; }
+        public ICollection<ProductSize> ProductsSizes { get; set; } = new List<ProductSize>();
     }
 
 

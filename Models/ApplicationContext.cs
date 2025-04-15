@@ -14,6 +14,7 @@ namespace UITraining.Models
         public virtual DbSet<Product> Products { get; set; }
 
         public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<ProductSize> ProductSizes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,9 +22,15 @@ namespace UITraining.Models
                 .HasOne(p => p.Supplier)//
                 .WithMany(p => p.Products)
                 .HasForeignKey(p => p.IdSupplier);// IdSuppiler
-                //.OnDelete(DeleteBehavior.Cascade);
+                                                  //.OnDelete(DeleteBehavior.Cascade);
 
-                base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ProductSize>()
+               .HasOne(p => p.Product)//
+               .WithMany(p => p.ProductsSizes)
+               .HasForeignKey(p => p.ProductId);// IdSuppiler
+
+
+            base.OnModelCreating(modelBuilder);
             
         }
 
