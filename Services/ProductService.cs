@@ -115,7 +115,7 @@ namespace UITraining.Services
         public List<SelectListItem> Products()
         {
             var datas = _conteks.Products
-                .Where(x => x.ProductStatus == GeneralStatusData.Active)
+                .Where(x => x.ProductStatus == GeneralStatusData.published)
                 .Select(x => new SelectListItem
                 {
                     Text = x.Name,

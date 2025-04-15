@@ -56,6 +56,31 @@ namespace UITraining.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("UITraining.Models.DB.ProductSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSizes");
+                });
+
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +114,22 @@ namespace UITraining.Migrations
                         .IsRequired();
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.ProductSize", b =>
+                {
+                    b.HasOne("UITraining.Models.DB.Product", "Product")
+                        .WithMany("ProductsSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.Product", b =>
+                {
+                    b.Navigation("ProductsSizes");
                 });
 
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>

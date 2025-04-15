@@ -11,8 +11,8 @@ using UITraining.Models;
 namespace UITraining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250302035603_addsupplier")]
-    partial class addsupplier
+    [Migration("20250415151523_jjhdddssa")]
+    partial class jjhdddssa
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,8 @@ namespace UITraining.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("ProductStatus")
                         .HasColumnType("int");
@@ -57,6 +57,31 @@ namespace UITraining.Migrations
                     b.HasIndex("IdSupplier");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.ProductSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>
@@ -75,6 +100,9 @@ namespace UITraining.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("SupplierStatus")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
@@ -89,6 +117,22 @@ namespace UITraining.Migrations
                         .IsRequired();
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.ProductSize", b =>
+                {
+                    b.HasOne("UITraining.Models.DB.Product", "Product")
+                        .WithMany("ProductsSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("UITraining.Models.DB.Product", b =>
+                {
+                    b.Navigation("ProductsSizes");
                 });
 
             modelBuilder.Entity("UITraining.Models.DB.Supplier", b =>

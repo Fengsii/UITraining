@@ -3,10 +3,11 @@ using UITraining.Models.DB;
 using UITraining.Models.DTO;
 using UITraining.Models;
 using Microsoft.EntityFrameworkCore;
+using UITraining.Interfaces;
 
 namespace UITraining.Services
 {
-    public class ProductSizeService
+    public class ProductSizeService : IProductSize
     {
         private readonly ApplicationContext _conteks;
 
@@ -31,25 +32,24 @@ namespace UITraining.Services
 
         public ProductSize GetProductSizeById(int id)
         {
-            var data = _conteks.ProductSizes.FirstOrDefault();
+            var data = _conteks.ProductSizes.FirstOrDefault(x => x.Id == id);
             if (data == null)
             {
                 return new ProductSize();
             }
-
             return data;
         }
 
-        public bool EditProductSize(ProductSize productSize)
+        public bool EditProductSize(ProductSizeDTO productSizeDTO)
         {
-            var data = _conteks.ProductSizes.FirstOrDefault(x => x.Id == productSize.Id);
+            var data = _conteks.ProductSizes.FirstOrDefault(x => x.Id == productSizeDTO.Id);
             if (data == null)
             {
                 return false;
             }
-            data.ProductId = productSize.ProductId;
-            data.Size = productSize.Size;
-            data.Stock = productSize.Stock;
+            data.ProductId = productSizeDTO.ProductId;
+            data.Size = productSizeDTO.Size;
+            data.Stock = productSizeDTO.Stock;
 
             _conteks.ProductSizes.Update(data);
             _conteks.SaveChanges();
@@ -66,11 +66,12 @@ namespace UITraining.Services
 
             //data.ProductStatus = GeneralStatusData.delete;
             //_conteks.Products.Update(data);
+            _conteks.ProductSizes.Remove(data);
             _conteks.SaveChanges();
             return true;
         }
 
-        public bool AddProduct(ProductDTO product)
+        public bool AddProduct(ProductSizeDTO productSize)
         {
             //var data = _conteks.Products.Select(x => new Product
             //{
@@ -87,18 +88,14 @@ namespace UITraining.Services
             //    return false;
             //}
 
-            var data = new Product();
+            var data = new ProductSize();
 
-            data.Name = product.Name;
-            data.Description = product.Description;
-            data.Price = product.Price;
-
-            data.Stock = product.Stock;
-            data.ProductStatus = product.ProductStatus;
-            data.IdSupplier = product.IdSupplier;
+            data.Size = productSize.Size;
+            data.Stock = productSize.Stock;
+            data.ProductId = productSize.ProductId;
 
 
-            _conteks.Products.Add(data);
+            _conteks.ProductSizes.Add(data);
             _conteks.SaveChanges();
             return true;
 
