@@ -34,10 +34,10 @@ namespace UITraining.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .HasOne(p => p.Supplier)//
+                .HasOne(p => p.Supplier)
                 .WithMany(p => p.Products)
-                .HasForeignKey(p => p.IdSupplier);// IdSuppiler
-                                                  //.OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.IdSupplier);
+                                                  
 
 
             // User-Balance one-to-one relationship

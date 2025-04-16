@@ -27,9 +27,9 @@ builder.Services.AddDbContext<ApplicationContext>(
 //builder.Services.AddScoped<IUserAccess, UserAccessService>();
 
 //============== YANG BARU DITAMBAHKAN ==============\\
-builder.Services.AddScoped<IAuth, AuthService>();
+builder.Services.AddScoped<IAuthentication, AuthenticationService>();
 builder.Services.AddHttpContextAccessor(); // Untuk mengakses HttpContext
-builder.Services.AddScoped<IUser, UserService>(); // Mendaftarkan UserService
+builder.Services.AddScoped<IUser, LoginLayoutService>(); // Mendaftarkan UserService
 builder.Services.AddScoped<IProduct2, Product2Service>();
 builder.Services.AddScoped<ICatagory, CategoryService>();
 //builder.Services.AddScoped<IReview, ReviewService>();
@@ -82,6 +82,6 @@ app.MapControllerRoute(
     name: "default",
 //pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 //pattern: "{controller=UserAccess}/{action=Login}/{id?}");
-pattern: "{controller=Admin}/{action=LoginUser}/{id?}");
+pattern: "{controller=Authentication}/{action=LoginUser}/{id?}");
 
 app.Run();

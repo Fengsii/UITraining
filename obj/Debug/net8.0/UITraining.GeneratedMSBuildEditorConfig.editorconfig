@@ -20,20 +20,28 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Admin/EditUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Authentication/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Authentication/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Admin/LoginUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW5Vc2VyLmNzaHRtbA==
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Authentication/LoginUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5Vc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Admin/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVnaXN0ZXIuY3NodG1s
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Authentication/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Cart/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL 7390/Documents/CSharp Lanjutan/UITraining/Views/Category/Edit.cshtml]

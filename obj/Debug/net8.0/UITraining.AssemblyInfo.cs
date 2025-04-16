@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UITraining")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5749fa593e57594fd6f01610a2b14c8ee5a270b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a555de05b33352ac1195097488a13e844edc3f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("UITraining")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UITraining")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
